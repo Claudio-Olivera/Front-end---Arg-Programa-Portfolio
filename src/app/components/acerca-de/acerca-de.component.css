@@ -1,0 +1,33 @@
+
+       .container .img-Perfil {
+        margin-top: -80px;
+        max-height:150px;         
+        background-color: rgb(2, 247, 137);
+        padding: 2px;
+        border-radius: 5%;
+      }
+    
+      .div-Nombre{
+        margin-top: 50px;
+            }
+      @media screen and (max-width:365px) {
+        .div-Nombre{
+        margin-top: 85px;
+      }
+      }
+      .hover__boton{
+        margin-top:40px;
+        margin-left:-20px;  
+        height: 40px;
+        width: 40px;
+        background-color:rgb(2, 247, 137);
+      }
+       .hover__boton:hover{
+        background-color:#005afc;
+        font-size: 20px;
+        height: 45px;
+        width: 45px;
+        color: white;
+     
+     }
+ 

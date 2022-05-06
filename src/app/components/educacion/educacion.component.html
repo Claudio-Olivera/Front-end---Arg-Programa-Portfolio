@@ -1,0 +1,174 @@
+  <h3 class="h3-titulos pt-4 ps-4 display-6 text-left mb-1">
+    Educacion  <!-- la palabra educacion fuera de la tarjeta? -->
+    <span *ngIf="botonEditEducacion == true; else mostrar4"></span>
+    <ng-template #mostrar4 class="hover__boton">
+      <a
+      class="btn btn-outline-light hover__boton mb-5"
+      role="button" title="Agregar Información"
+      data-bs-target="#EducacionModalNuevo"
+      data-bs-toggle="modal"
+      ><i class="fa-solid fa-square-plus"></i
+    ></a>
+  </ng-template>
+</h3>
+
+<!--======= Inicio de Educacion ======= -->
+
+
+
+ <div *ngFor="let listas of miPortfolio">
+  <div *ngFor="let miPortfolio of listas">
+
+
+<div class="container-fluid">
+  <input [(ngModel)]="miPortfolio.id" #identificador style="display: none;"><br> 
+  <article class="container-fluid col-sm-12 col-12 mx-auto card mb-3 bg-dark">
+    <h4 class="h3-acercaDe text-center mt-3">
+    
+      {{ miPortfolio.nivelEducativo }}
+    </h4>
+    <div class="container d-flex flex-column">
+      
+      <p class="row-2 text-white text-parrafos">
+      
+        {{ miPortfolio.titulo }}
+        <br />
+      </p>
+      <p class="row-2 text-white text-parrafos">
+      
+        {{ miPortfolio.institucion }}
+        <br/>
+      </p>
+    </div>
+    
+   
+    <span *ngIf="botonEditEducacion == true; else mostrar4"></span>
+    <ng-template #mostrar4 class="hover__boton">
+      <div class="text-center">
+        <a
+        class="btn btn-outline-light hover__boton mb-3"
+        role="button"
+        data-bs-target="#EducacionModal"
+        data-bs-toggle="modal"
+        (click)="editar(identificador.value, miPortfolio.titulo,miPortfolio.nivelEducativo,miPortfolio.institucion)" title="Editar Tarjeta"
+        ><i class="fa-solid fa-pencil"></i
+          ></a>
+
+          </div>
+        </ng-template>
+     
+      </article>
+    </div>
+  
+    <div
+    class="modal fade"
+    id="EducacionModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Editar Datos Personales
+          </h5>
+          <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <p class="form-control">
+            Escribe el nivel/tipo educativo<input
+            class="form-control"
+            type="text"
+            [(ngModel)]="editarEducacion.nivelEducativo"
+            />Escribe el titulo obtenido
+            <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="editarEducacion.titulo"
+            />Detalle/Institucion<textarea
+            class="form-control"
+            rows="4"
+            [(ngModel)]="editarEducacion.institucion"
+            ></textarea>
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success fa-solid fa-floppy-disk" (click)="editarEd()" title="Guardar Cambios">
+        </button>
+  
+        <button
+        type="button"
+        class="btn btn-danger fa-solid fa-trash-can" title="Borrar Tarjeta"
+        (click)="borradoCompleto()"
+        >
+     
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+</div>
+</div> 
+
+
+<div
+class="modal fade"
+id="EducacionModalNuevo"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">
+        Editar Datos Personales
+      </h5>
+      <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+      ></button>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <p class="form-control">
+        Escribe el nivel/tipo educativo<input
+        class="form-control"
+        type="text"
+        [(ngModel)]="nuevoEducacion.nivelEducativo"
+        />Escribe el titulo obtenido
+        <input
+        class="form-control"
+        type="text"
+        [(ngModel)]="nuevoEducacion.titulo"
+        />Detalle/Institucion<textarea
+        class="form-control"
+        rows="4"
+        [(ngModel)]="nuevoEducacion.institucion"
+        ></textarea>
+      </p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success fa-solid fa-floppy-disk" title="Guardar"(click)="agregarEd()">
+
+    </button>
+    
+  
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,127 @@
+<h3 class="h3-titulos pt-4 ps-4 display-6 text-left mb-2 mt-1">Experiencia
+<span *ngIf="botonEditExperiencia==true else mostrar4"></span>
+     <ng-template #mostrar4 class="hover__boton">
+
+      <a
+      class="btn btn-outline-light hover__boton mb-5 ms-3"
+      role="button" title="Agregar Información"
+      data-bs-target="#ExperienciaModalNuevo"
+      data-bs-toggle="modal"
+      ><i class="fa-solid fa-square-plus"></i
+        ></a>
+        </ng-template>
+      </h3>
+
+<!--==== Inicio de Experiencia ..==== -->
+
+
+<div *ngFor="let listas of miPortfolio">
+  <div *ngFor="let miPortfolio of listas">
+
+
+<div class="container-fluid">
+  <input [(ngModel)]="miPortfolio.id" #identificador style="display: none;"><br> <!-- esta linea es para extraer el valor de x.id -->
+  <article class="container-fluid col-sm-12 col-12 mx-auto card mb-3 bg-dark">
+    <h4 class="h3-acercaDe text-center mt-3">{{miPortfolio.empleo}}</h4>
+    <div class="container d-flex flex-column">
+    
+      <p class="row-2 text-white text-parrafos">
+          {{miPortfolio.descripcionEmpleo}}
+          <br/>
+        </p>  
+      </div>
+   
+     <!-- Inicio boton editar Experiencia--> 
+     <span *ngIf="botonEditExperiencia==true else mostrar4"></span>
+     <ng-template #mostrar4 class="hover__boton">
+     <div class="text-center"> 
+       <a class=" btn btn-outline-light  hover__boton mb-3"  role="button" data-bs-target="#ExperienciaModal" data-bs-toggle="modal"  (click)="editar(identificador.value,miPortfolio.empleo,miPortfolio.descripcionEmpleo)" title="Editar Tarjeta"><i class="fa-solid fa-pencil" ></i></a>
+     </div>
+     </ng-template>
+     <!-- final boton editar experiencia-->
+
+
+    </article>
+
+    </div>
+  <!--======= Fin de Experiencia..======= -->
+
+    <!-- Inicio MODAL editar Experiencia-->
+    <div  class="modal fade" id="ExperienciaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Experiencia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+            <p class="form-control" >El cargo ocupado <input class="form-control" type="text" [(ngModel)]="editarExperiencia.empleo"  >Breve detalle de tu cargo  <textarea class="form-control" rows="4" [(ngModel)]="editarExperiencia.descripcionEmpleo" ></textarea></p>  
+
+        
+          </div>
+          </div>
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-success fa-solid fa-floppy-disk" title="Guardar Cambios" (click)="editarExp()"><!-- Enviar --></button>
+
+
+            <button type="button" class="btn btn-danger fa-solid fa-trash-can" title="Borrar Tarjeta" (click)="eliminarExp()"><!-- Borrar --></button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FINAL MODAL editar Experiencia-->
+
+  </div><!-- div del for -->
+</div> <!-- DIV DEL FOR -->
+
+<!-- Inicio MODAL crear Experiencia -->
+<div
+class="modal fade"
+id="ExperienciaModalNuevo"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">
+       Agregar Experiencia
+      </h5>
+      <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+      ></button>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <p class="form-control">
+        Cargo Ocupado<input
+        class="form-control"
+        type="text"
+        [(ngModel)]="nuevoExperiencia.empleo"
+        />Descripcion del Empleo/Tareas realizadas
+
+        <textarea
+        class="form-control"
+        rows="4"
+        [(ngModel)]="nuevoExperiencia.descripcionEmpleo"
+        ></textarea>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success fa-solid fa-floppy-disk" title="Guardar"(click)="agregarExp()">
+ <!--      Enviar -->
+    </button>
+    
+  
+</div>
+</div>
+</div>
+</div>

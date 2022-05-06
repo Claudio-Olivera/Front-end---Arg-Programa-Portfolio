@@ -1,0 +1,178 @@
+.izquierda{
+  width: 100%;
+}
+.img-Arg {
+  position: absolute;
+  top: 0px;
+  width: 170px;
+  min-width: 80px;
+} 
+.main-menu{
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0px;
+  padding-left: 0;
+  width: 100%;
+  display:inline-flex;
+  flex-direction:row;
+  align-items:flex-end;
+  /* color a modificar */
+  /* background-color: #a6e3e9; */
+}
+@media screen and (min-width:768px){
+  .main-menu{
+      justify-content: end;
+      flex-direction: row;
+      transform: translateY(0);      
+  }
+}
+.main-menu__item{
+  padding: 1em;
+}
+.main-menu__link{
+  /* color a modificar */
+  color:#ffffff ;
+  font-size: 30px;
+  margin-top: 100px;
+  padding: 10px;
+  text-decoration: none;
+}
+/* color a modificar */
+.main-menu__link:hover{ 
+  color: rgb(2, 247, 137);
+}
+@media screen and (min-width:768px){
+  .main-menu__link{     
+      margin-top: 10px; 
+      font-size: 30px;   
+  }
+}
+@media screen and (max-width:450px){
+  .main-menu__link{     
+      padding: 0px;
+     font-size:25px ;     
+  }
+} 
+.formularioOculto{
+  display: none;
+}
+.dblock{
+  display: block;
+}
+/* LOGO ARGENTINA PROGRAMA Y SUS HOVER CON FILTROS PARA EL CAMBIO DE COLOR*/
+.img-Arg {
+    display: block ;
+    float:left ;
+    margin-left: 2%;
+    height:auto;
+    width: 174px;
+    min-width: 80px ;
+  }
+    .img-Arg:hover {
+    -webkit-filter: invert(60%) sepia(20%) saturate(5000%) hue-rotate(1200deg) brightness(200%) contrast(100%);
+            filter: invert(60%) sepia(20%) saturate(5000%) hue-rotate(1200deg) brightness(200%) contrast(100%); 
+            /*cambiar color con hue-rotate*/
+  }
+  /* COLORES DE : ICONOS,SUS HOVER, BARRAS DE NAVEGACION, BODY  */
+      card {
+        background-color: transparent;
+        position: absolute;
+        margin-top: 270px;
+        margin-left: 90%;
+        max-height:200px ;
+        @media  (max-width: 1437px) {
+          margin-right: 20%;
+          width: 10%;
+        } 
+      }
+  .img-Div .img1 {
+    background: url("/assets/img/img-represent.jpg");
+    width: auto;
+    height:350px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+@media screen and (max-width:1100px) {
+    .img-Div .img1{ height:200px;}
+ }
+ @media screen and (max-width:406px) {
+    .img-Div .img1{
+      height: 150px;
+    } 
+      }
+  .pequecontenedor{
+    position: absolute;
+    top: 23%;
+    right: 2%;
+    height: 200px;
+    width: 190px;
+    background-color: rgb(53, 53, 53);
+    text-align: center;
+    border-radius: 3%;
+  }
+  @media screen and (max-width: 770px){
+    .pequecontenedor{
+      top:25%;
+    }
+  }
+  @media screen and (max-width: 404px){
+    .pequecontenedor{
+      top: 27%;
+      height: 200px;
+      width: 160px;
+    }
+  }
+  @media screen and (min-height: 1024px){
+    .pequecontenedor{
+      top: 17%;
+    }
+  }
+  @media screen and (height:1368px){
+    .pequecontenedor{
+      top: 15%;
+    }
+  }
+  @media screen and (height: 720px){
+    .pequecontenedor{
+      top: 35%;
+    }
+  }
+  @media screen and (height:600px){
+    .pequecontenedor{
+      top: 35%;
+    }
+  }
+  .pequecontenedor .form-control{
+    width: 90%;
+    margin:10% 5% 10%
+  }
+  .pequecontenedor .userboton{
+    border: 2px solid white ;
+    background-color:rgb(54, 54, 54);
+    padding: 5%;
+    color:rgb(255, 255, 255);
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    width: 90%;
+  }
+  .pequecontenedor .userboton:hover {
+    background-color: rgb(2, 247, 137);
+    color: black;
+  }
+  .texto-errorUser{
+    padding: -50%;
+    margin-top: -10%;
+    font-size: 80%;
+    margin-bottom: -7%;
+  }
+  .texto-errorContraseña{
+    padding: -50%;
+    margin-top: -10%;
+    font-size: 80%;
+    margin-bottom: 4%;
+  }
+  .form-control:focus{
+    border-color: rgb(2, 247, 137);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
