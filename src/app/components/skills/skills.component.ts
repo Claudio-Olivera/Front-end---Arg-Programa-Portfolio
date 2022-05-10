@@ -80,7 +80,7 @@ export class SkillsComponent implements OnInit {
 
 class Circulos {
   public progressValue:number = 0;
-  public speed: number = 15
+  public velocidad: number = 50
   public progressEndValue :number = 0;
   public stopper:any ; 
           constructor(a:string, b:string, st:number){
@@ -100,7 +100,7 @@ class Circulos {
         if (this.progressValue == this.progressEndValue) {
           clearInterval(stopper);
         }
-      },this.speed);  
+      },this.velocidad);  
     }
   } 
   export interface  Hard {
