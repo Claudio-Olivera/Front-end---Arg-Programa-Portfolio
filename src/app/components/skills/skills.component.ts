@@ -62,7 +62,7 @@ export class SkillsComponent implements OnInit {
   funcionDelScroll (){
      const yOffSet = window.pageYOffset;
      const scrollTop = this.document.documentElement.scrollTop;//para que funcione inject en constructor e import de document
-     if ((yOffSet || scrollTop) > 300 && (yOffSet || scrollTop) < 400 ){
+     if ((yOffSet || scrollTop) > 550 && (yOffSet || scrollTop) < 600 ){
       
       for (let n of this.miPortfolio){
         for (let z of n){
@@ -80,7 +80,7 @@ export class SkillsComponent implements OnInit {
 
 class Circulos {
   public progressValue:number = 0;
-  public velocidad: number = 50
+  public speed: number = 15
   public progressEndValue :number = 0;
   public stopper:any ; 
           constructor(a:string, b:string, st:number){
@@ -100,7 +100,7 @@ class Circulos {
         if (this.progressValue == this.progressEndValue) {
           clearInterval(stopper);
         }
-      },this.velocidad);  
+      },this.speed);  
     }
   } 
   export interface  Hard {

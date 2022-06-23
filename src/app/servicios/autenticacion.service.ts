@@ -16,8 +16,6 @@ url="https://claudioolivera.herokuapp.com/auth/login";
 //url="http://localhost:8080/auth/login";
 //urls = "http://localhost:8080";
 
-
-
 currentUserSubject:BehaviorSubject<any>;
 constructor(private http:HttpClient) { 
   
@@ -153,7 +151,7 @@ IniciarSesion(credenciales:any):Observable<any>{
   return this.http.post(this.url, credenciales).pipe(map(data=>{
     sessionStorage.setItem('currentUser', JSON.stringify(data));
     this.currentUserSubject.next(data); //linea faltante que no dejaba funcionar bien el interceptor
-    this.funciona = ! this.funciona;
+    this.funciona = !this.funciona;
     return data;
     }))
   }

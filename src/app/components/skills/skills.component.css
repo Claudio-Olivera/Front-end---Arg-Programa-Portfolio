@@ -15,10 +15,16 @@
       width:150px ;
     }
   }
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 610px) {
     .circulo-one,.circulo-two,.circulo-three,.circulo-four {
       height:100px ;
       width:100px ;
+    }
+  }
+  @media screen and (max-width: 360px) {
+    .circulo-one,.circulo-two,.circulo-three,.circulo-four {
+      height: 80px;
+      width:80px ;
     }
   }
 
@@ -94,7 +100,7 @@
         margin-left: 10px;
       }
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 610px) {
       .container .ico-html,.container .ico-css3,.container .ico-js,.container .ico-ang,.container .ico-comunicacion,.container .ico-hands,.container .ico-idea,.container .ico-estudio {
         font-size: 50px;
 

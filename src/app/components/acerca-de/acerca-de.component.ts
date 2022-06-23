@@ -29,10 +29,10 @@ noTieneContenido:boolean=false;
 constructor(private datosPortfolio:AutenticacionService,private cd:ChangeDetectorRef) { 
 }
 
-modal(){
+ modal(){
   this.myModal.addEventListener('shown.bs.modale',  () => {
  this.myInput.focus()
-})} 
+ })} 
 
   ngOnInit(): void {
     this.datosPortfolio.obtenerDatos().subscribe((data: any[])=>{

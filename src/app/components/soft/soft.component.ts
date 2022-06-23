@@ -51,7 +51,8 @@ export class SoftComponent implements OnInit {
   editarS(){
     this.datosPortfolio.editSoft(this.editarSoft.id, this.editarSoft).subscribe(
       (data: any) => {
-        console.log(data); } );
+        console.log(data)
+        window.location.reload(); } );
       }
   
   borrarS(){
