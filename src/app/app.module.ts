@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from '../routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
@@ -18,7 +18,9 @@ import { AlifeFileToBase64Module } from 'alife-file-to-base64';
 
 import {  NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SoftComponent } from './components/soft/soft.component';
-
+import { NavegacionComponent } from './components/navegacion/navegacion.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -30,18 +32,20 @@ import { SoftComponent } from './components/soft/soft.component';
     SkillsComponent,
     ProyectosComponent,
     FooterComponent,
-    SoftComponent
-  
+    SoftComponent,
+    NavegacionComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     FontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,
     AlifeFileToBase64Module,
-    NgbModule
+    NgbModule,
+    NgxSpinnerModule
   ],
   providers: [AutenticacionService,{provide:HTTP_INTERCEPTORS,useClass:InterceptorService, multi:true}],
   bootstrap: [AppComponent]

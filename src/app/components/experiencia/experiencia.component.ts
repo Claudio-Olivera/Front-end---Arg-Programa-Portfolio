@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SGGuard } from 'src/app/guard/sg.guard';
+import { ExperienciaService } from 'src/app/servicios/experiencia.service';
 
-import { AutenticacionService} from 'src/app/servicios/autenticacion.service';
 @Component({
   selector: 'app-experiencia',
   templateUrl: './experiencia.component.html',
@@ -11,21 +12,14 @@ export class ExperienciaComponent implements OnInit {
   miPortfolio:any=[];
   nuevoExperiencia : experiencia = {id:0, empleo:' ', descripcionEmpleo: ' '};
   editarExperiencia : experiencia = {id:0, empleo: ' ', descripcionEmpleo: ' '};
-  botonEditExperiencia:boolean = true;
 
-  constructor(private datosPortfolio:AutenticacionService, private cd:ChangeDetectorRef) { }
+
+  constructor(private datosPortfolio:ExperienciaService, public SGguard:SGGuard) { }
 
   ngOnInit(): void {
     this.datosPortfolio.obtenerExp().subscribe((datos:any[])=>{this.miPortfolio.push(datos)}); 
- 
   }
 
-  ngAfterViewChecked():void{
-    if(this.datosPortfolio.funciona==false){
-      this.botonEditExperiencia = false;
-    }
-    this.cd.detectChanges();
-  } 
 
   editar(id:any, x:any,l:any){
  this.editarExperiencia.id=id
@@ -49,12 +43,11 @@ export class ExperienciaComponent implements OnInit {
   editarExp(){
     this.datosPortfolio.editExp(this.editarExperiencia, this.editarExperiencia.id).subscribe(
       data => {
-        console.log(data); } );
+       console.log(data); } );
       }
   
 eliminarExp(){
   this.datosPortfolio.borrarExp(this.editarExperiencia.id).subscribe((data:any) => {return data})}
-
 }
 
 export interface experiencia{

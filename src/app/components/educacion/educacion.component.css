@@ -1,16 +1,25 @@
 .hover__boton{
-    margin-top:40px;
-    margin-left:-20px;  
+    line-height: 170%;
     height: 40px;
     width: 40px;
+    color: black;
     background-color:rgb(2, 247, 137);
-    margin-left: 1%
   }
    .hover__boton:hover{
     background-color:#005afc;
     font-size: 20px;
-    height: 45px;
-    width: 45px;
     color: white;
-    
  }
+    .agregar__boton{
+      line-height: 170%;
+      height: 40px;
+      width: 40px;
+      color: black;
+      background-color:rgb(2, 247, 137);
+}
+    .agregar__boton:hover{
+    background-color:#005afc;
+    font-size: 20px;
+    color: white;
+}
+       

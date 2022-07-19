@@ -1,7 +1,9 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 
 import { throttleTime } from 'rxjs';
+import { SGGuard } from 'src/app/guard/sg.guard';
 import { AutenticacionService} from 'src/app/servicios/autenticacion.service';
+import { EducacionService } from 'src/app/servicios/educacion.service';
 
 @Component({
   selector: 'app-educacion',
@@ -12,17 +14,15 @@ export class EducacionComponent implements OnInit {
 
   miPortfolio:any=[];
  
- /*  nuevo:any=[]; */ //agregado para que llegen aca los nuevos datos
+
 
   nuevoEducacion : educacion = {id: 0, titulo:' ', nivelEducativo: ' ', institucion: ' ' }
-
   editarEducacion : educacion = {id: 0, titulo:' ', nivelEducativo: ' ', institucion: ' ' }
 
-  botonEditEducacion:boolean = true;
   
 
 
-  constructor(private datosPortfolio:AutenticacionService, private cd:ChangeDetectorRef) { 
+  constructor(private datosPortfolio:EducacionService,public SGguard:SGGuard, private cd:ChangeDetectorRef) { 
 
   }
 
@@ -30,14 +30,8 @@ export class EducacionComponent implements OnInit {
     /* this.datosPortfolio.obtenerEdu().subscribe(data=>{
       this.miPortfolio=data; */
       this.datosPortfolio.obtenerEdu().subscribe((datos: any[])=>{this.miPortfolio.push(datos)}) 
-    
 }
-ngAfterViewChecked():void{
-  if(this.datosPortfolio.funciona==false){
-    this.botonEditEducacion = false;
-  }
-  this.cd.detectChanges();
-} 
+
 
 editar(id:any,x:any,l:any,r:any){
   this.editarEducacion.id=id
@@ -46,32 +40,30 @@ editar(id:any,x:any,l:any,r:any){
   this.editarEducacion.institucion=r
   }
 
-/* agregar(){ //agregado de igualdadaes para que funcione
-  this.editarEducacion=this.nuevo;
-  this.nuevo=this.nuevoEducacion
-} */
 
 verEd(){
   this.datosPortfolio.obtenerEdu().subscribe(data=>{
     console.log(data);
-    this.miPortfolio=data [0]})
+    this.miPortfolio=data[0]})
   }
 
 agregarEd(){
   this.datosPortfolio.sumarEdu(this.nuevoEducacion).subscribe(
   data => {
-  console.log(data); } );
+  console.log(data);
+  window.location.reload()});
 }
 
 editarEd(){
   this.datosPortfolio.editEdu(this.editarEducacion, this.editarEducacion.id).subscribe(
   data => {
-  console.log(data); } );
+  console.log(data);
+  window.location.reload()});
   }
     
-/* aca esta el delete de todo el elemento */
 borradoCompleto(){
-   this.datosPortfolio.borrarEdu(this.editarEducacion.id).subscribe((data:any) =>   {return data})}
+  this.datosPortfolio.borrarEdu(this.editarEducacion.id).subscribe((data:any)=>{window.location.reload()})
+}
 
    
 }

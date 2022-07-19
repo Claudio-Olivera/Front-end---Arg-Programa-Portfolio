@@ -2,6 +2,8 @@ import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HammerGestureConfig, HAMMER_LOADER } from '@angular/platform-browser';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SGGuard } from 'src/app/guard/sg.guard';
+import { AcercaDeService } from 'src/app/servicios/acerca-de.service';
 import { AutenticacionService} from 'src/app/servicios/autenticacion.service';
 
 @Component({
@@ -10,12 +12,12 @@ import { AutenticacionService} from 'src/app/servicios/autenticacion.service';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
- 
-  botonEditImg:boolean = true ;
-  botonEditAcerca:boolean = true;
+  
+
   miPortfolio:any=[];
 
   nuevoAcerca : Acercade = { nombres:' ', apellidos: ' ', ocupacion: ' ', sobremi: ' ', email:' ', fechaNacimiento: ' ',  imgPerfil : ' ',imgRepresentativa:' ' };
+
   editarAcerca : Acercade = { nombres:' ', apellidos: ' ', ocupacion: ' ', sobremi: ' ', email:' ', fechaNacimiento:' ',  imgPerfil : ' ',imgRepresentativa:' ' };
   
 
@@ -26,7 +28,7 @@ mensajeDeError:String="";
 mensajeDeEnvio:String="";
 noTieneContenido:boolean=false;
 
-constructor(private datosPortfolio:AutenticacionService,private cd:ChangeDetectorRef) { 
+constructor(private datosPortfolio:AcercaDeService,private cd:ChangeDetectorRef, public SGguard:SGGuard) { 
 }
 
  modal(){
@@ -40,11 +42,7 @@ constructor(private datosPortfolio:AutenticacionService,private cd:ChangeDetecto
   }
 
   ngAfterViewChecked():void{
-    if(this.datosPortfolio.funciona==false){
-      this.botonEditImg = false;
-      this.botonEditAcerca = false;
-    }
-    this.cd.detectChanges();
+   
   }  
 
   editar(){

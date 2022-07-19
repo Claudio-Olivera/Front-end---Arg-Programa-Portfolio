@@ -1,7 +1,6 @@
-import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-
-import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { SGGuard } from 'src/app/guard/sg.guard';
+import { ProyectosService } from 'src/app/servicios/proyectos.service';
 
 
 @Component({
@@ -23,8 +22,6 @@ export class ProyectosComponent implements OnInit {
     myModal: any = document.getElementById('myModal');
     myInput: any = document.getElementById('myInput');
     
-    botonEditProyectos:boolean = true;
-  botonEditImg:boolean = true ;
 
  mensajeDeErrorUno:String="";
  mensajeDeEnvioUno:String="";
@@ -35,9 +32,11 @@ export class ProyectosComponent implements OnInit {
  mensajeDeErrorTres:String="";
  mensajeDeEnvioTres:String="";
  noTieneContenidoTres:boolean=false;
+ 
+ guard=this.SGguard
 
 
-  constructor(private datosPortfolio:AutenticacionService, private cd:ChangeDetectorRef) { }
+  constructor(private datosPortfolio:ProyectosService, private cd:ChangeDetectorRef, private SGguard:SGGuard) { }
 
   modal(){
     this.myModal.addEventListener('shown.bs.modale',  () => {
@@ -50,16 +49,6 @@ export class ProyectosComponent implements OnInit {
       this.miPortfolio=data[0]})
     }
     
-    ngAfterViewChecked():void{
-      if(this.datosPortfolio.funciona==false){
-        this.botonEditImg = false;
-        this.botonEditProyectos = false;
-      this.editarProyectos=this.miPortfolio;   
-    
-      }
-    this.cd.detectChanges();
-  } 
-
 
   CambioImgUno(e:any){
     this.editarProyectos.proImgUno = e[0].base64

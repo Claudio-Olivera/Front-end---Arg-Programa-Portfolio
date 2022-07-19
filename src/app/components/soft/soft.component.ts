@@ -1,6 +1,7 @@
-import { DOCUMENT } from '@angular/common';
-import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
-import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { SGGuard } from 'src/app/guard/sg.guard';
+import { SoftService } from 'src/app/servicios/soft.service';
 
 @Component({
   selector: 'app-soft',
@@ -10,25 +11,18 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 export class SoftComponent implements OnInit {
 
   miPortfolios:any=[];
-  botonEditHardSoft:boolean = true;
 
-/*   font:any="fa-solid fa-square-plus bg-primary" */
   nuevoSoft : Soft = {id:0, softTitulo:' ', softDescripcion:' ', icono:' '}  
   editarSoft: Soft = {id:0, softTitulo:' ', softDescripcion:' ', icono:' '}
 
-  constructor(@Inject(DOCUMENT)private document:Document,private datosPortfolio:AutenticacionService, private cd:ChangeDetectorRef) { }
+  constructor(private datosPortfolio:SoftService, public SGguard:SGGuard) { }
 
   ngOnInit(): void {
     this.datosPortfolio.obtenerSoft().subscribe(
       (datos:any[])=>{this.miPortfolios.push(datos)})
   }
 
-  ngAfterViewChecked():void{
-    if(this.datosPortfolio.funciona==false){
-      this.botonEditHardSoft = false;
-    }
-    this.cd.detectChanges();
-  } 
+ 
   editar(id:any,x:any,l:any,m:any){
     this.editarSoft.id=id
     this.editarSoft.softTitulo=x
@@ -52,14 +46,14 @@ export class SoftComponent implements OnInit {
     this.datosPortfolio.editSoft(this.editarSoft.id, this.editarSoft).subscribe(
       (data: any) => {
         console.log(data)
-        window.location.reload(); } );
+        window.location.reload()
+        window.focus(); } );
       }
   
   borrarS(){
     this.datosPortfolio.borrarSoft(this.editarSoft.id).subscribe((data:any)=>  {return data})}    
-
-
 }
+
 export interface Soft{
   id:Number;
   softTitulo:String;

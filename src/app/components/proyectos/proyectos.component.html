@@ -1,8 +1,11 @@
 <div class="container-fluid">
   <article class="container-fluid col-sm-12 col-12 mx-auto card mb-3 bg-dark">
-
-    <h3 class="h3-titulos pt-4 ps-4 display-6 text-left  mb-3">Proyectos</h3>
-
+    
+    <h3 class="h3-titulos pt-4 ps-4 display-6 text-left mb-3">Proyectos
+   
+       <a class=" btn btn-outline-light  hover__boton"  *ngIf="guard.canActivate()" role="button" data-bs-target="#ProyectosModal" data-bs-toggle="modal" ><i class="fa-solid fa-pencil"  ></i></a>
+    
+    </h3>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -11,7 +14,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <a href="{{miPortfolio.proLinkUno}}" target="_blank">
+        <a href="{{miPortfolio.proLinkUno}}" target="_blank"> 
         <img src="{{miPortfolio.proImgUno}}" class="img-carrousel" alt="...">
         </a>
         <div class="carousel-caption d-block p-0 mt-5 ">
@@ -51,13 +54,10 @@
 
   </div>
 
+
        <!-- Inicio boton editar Proyectos--> 
-       <span *ngIf="botonEditImg==true else mostrar4"></span>
-       <ng-template #mostrar4 class="hover__boton">
-       <div class="text-center"> 
-         <a class=" btn btn-outline-light  hover__boton"  role="button" data-bs-target="#ProyectosModal" data-bs-toggle="modal" ><i class="fa-solid fa-pencil" ></i></a>
-       </div>
-       </ng-template>
+      <!-- ACA  HABIA NG TEMPLATE -->
+
        <!-- final boton editar Proyectos--> 
 </article>
 </div>

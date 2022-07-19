@@ -1,75 +1,152 @@
-<nav class="inline-container main-nav"> 
-    <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
-        <div *ngIf="oculto" class="pequecontenedor col">
-                <input type="text" 
-                placeholder="User" formControlName="nombreUsuario" class="form-control" id="usuario">
-                <div *ngIf="User?.errors && User?.touched">
+
+
+   
+        <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+            <div *ngIf="oculto" class="pequecontenedor col">
+            <input type="text" placeholder="User" formControlName="nombreUsuario" class="form-control" id="usuario">
+            <div *ngIf="User?.errors && User?.touched">
                 <p *ngIf="User?.hasError('required')" class="text-danger texto-errorUser">
                     El usuario es requerido.
                 </p>
                 <p *ngIf="User?.errors?.['minlength']" class="text-danger texto-errorUser">
                     Ingresa más de 8 caracteres.
                 </p>
-                </div> 
-        <input type="password" placeholder="contraseña"  formControlName="password" class="form-control" id="password">
-        <div *ngIf="Password?.errors && Password?.touched">
-            <p *ngIf="Password?.hasError('required')" class="text-danger texto-errorContraseña">
-               La contraseña es requerida.
-            </p>
-            <p *ngIf="Password?.errors?.['minlength']" class="text-danger texto-errorContraseña">
-                Ingresa más de 8 caracteres.
-            </p>
-            </div> 
-        <button type="submit" class="userboton">Ingresar</button>
-    </div>
-</form >
-
-    <ul id="main-menu" class="main-menu ">
-        <div class="izquierda">
-            <a class="a-Arg"
-            href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa " target="_blank">
-            <img class="img-Arg" src="assets/img/ArgPrograma.png" alt="arg" />
-            </a>
+            </div>
+            <input type="password" placeholder="contraseña" formControlName="password" class="form-control"
+            id="password">
+            <div *ngIf="Password?.errors && Password?.touched">
+                <p *ngIf="Password?.hasError('required')" class="text-danger texto-errorContraseña">
+                    La contraseña es requerida.
+                </p>
+                <p *ngIf="Password?.errors?.['minlength']" class="text-danger texto-errorContraseña">
+                    Ingresa más de 8 caracteres.
+                </p>
+            </div>
+            <button type="submit" class="userboton" *ngIf="!sgf.canActivate()">Ingresar</button>
+            <button type="submit" class="userboton mt-2" *ngIf="sgf.canActivate()"
+            (click)="offSesion($event)">Cerrar Sesión</button>
         </div>
-
-        <li class="main-menu__item">
-            <a href="#" class="main-menu__link fa-brands fa-twitter"></a>
-        </li>
-        <li class="main-menu__item">
-            <a href="#" class="main-menu__link fa-brands fa-linkedin"></a>
-        </li>
-        <li class="main-menu__item">
-            <a href="#" class="main-menu__link fa-brands fa-instagram"></a>
-        </li>
-        
-        <li class="main-menu__item">
-            <a href="#" class="main-menu__link fa-brands fa-github"></a>
-        </li>
-
-        <span *ngIf="ocultarLog == false else mostrar3 "></span>
-        <ng-template #mostrar3>
-            <li class="main-menu__item">
-                <a id="enviar" class="main-menu__link fa-solid fa-user" type="submit" (click)="mostrar()"></a>
-            </li>
-        </ng-template>
-
-        <span *ngIf="mostrarCierre == true else mostrar4 "></span>
-        <ng-template #mostrar4>
-        <li class="main-menu__item">
-            <a id="enviar" class="main-menu__link  fa-solid fa-arrow-right-from-bracket" type="submit" (click)="offSesion($event)"></a>
-        </li>
-        </ng-template>
-        </ul>
+    </form>
     
-</nav>
-<div class="img-Div">
-<div class="img1"></div>
+
+
+<div class="container-flex">
+  
+        <a 
+        href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa "
+        target="_blank">
+        <img class="img-Arg" src="assets/img/ArgPrograma.png" alt="arg" />
+    </a>
+  
+    
+    <ul class="d-flex ul__Icons list-unstyled inline-row">
+        <li class="">
+     <a href="#" class="main-menu__link fa-brands fa-twitter"></a>
+ </li>
+ <li class="">
+     <a href="#" class="main-menu__link fa-brands fa-linkedin"></a>
+ </li>
+ <li class="">
+     <a href="#" class="main-menu__link fa-brands fa-instagram"></a>
+ </li>
+ <li class="">
+     <a href="#" class="main-menu__link fa-brands fa-github"></a>
+ </li>
+ <li class="">
+     <a id="enviar" class="main-menu__link fa-solid fa-user" type="submit"
+     [className]="!sgf.canActivate()?'main-menu__link fa-solid fa-user':'main-menu__link fa-solid fa-arrow-right-from-bracket'"
+     (click)="mostrar()"></a>
+ </li>
+</ul>
+
 </div>
 
 
+<!--Imagen respresentativa agregar esto con solo el #alcanza. -->
+<div class="container-flex">
+    
+    <div class="img1" #img1> 
+
+        <a *ngIf="sgf.canActivate()&&miPortfolio.imgRepresentativa!=null" class="btn btn-outline-light align-self-start botonEdit__represent" role="button"
+        data-bs-target="#representModal" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></a>
+        <div class="container-fluid d-flex justify-content-center" >    
+            <div class="">
+                <h1 class="text-center text-white display-5 titulo mt-3">Claudio Miguel Olivera González</h1>
+                <h2 class="text-center text-white display-6 titulo">Full Stack Developer Junior</h2>
+            </div>
+        </div>
+        
+        <div class="container-flex">
+
+            <div class="d-flex justify-content-center">
+                <img class="img-Perfil rounded-circle mb-4 align-self-center" *ngIf="miPortfolio.imgPerfil!=null" src={{miPortfolio.imgPerfil}}/>
+                <!--inico del boton editar img-->
+                <!-- fin de boton editar img -->
+   
+                <div class="d-flex justify-content-center position-absolute">
+                    <a *ngIf="sgf.canActivate()&&miPortfolio.imgPerfil!=null" class="align-self-center btn btn-outline-light hover__boton" role="button"
+                    data-bs-target="#exampleModal" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i> </a>
+                </div>
+            </div>
+            
 
 
+        </div>
+
+    </div><!-- div de imagen representativa -->
+</div>
+
+  <!-- spinner doble para que sea mas bonito -->
+  <ngx-spinner type="ball-spin-clockwise"></ngx-spinner>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#02f789"
+  type="ball-spin-clockwise">
+  <p style="font-size: 20px; color: white">Cargando...</p>></ngx-spinner>
+  <!-- fin spinner -->
+
+<!-- ############################ INICIO DE MODALES Y DE SPINNER #################################################### -->
+
+    <!-- inicio modal editar imagen -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cambiar Imagen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input class="div-acercaDe mt-2 ms-2 rounded" type="file" alife-file-to-base64
+                        (onFileChanged)="onFileChanged($event)" accept=".png, .jpg, .jpeg">
+                </div>
+                <div class="modal-footer">
+                    <p *ngIf="noTieneContenido" class="text-danger">{{mensajeDeError}}</p>
+                    <p class="text-success">{{mensajeDeEnvio}}</p>
+                    <button type="button" class="btn btn-success" (click)="editarImgPerf()">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+    <!--inicio modal editar imagen representativa -->
 
-
+    <div class="modal fade" id="representModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cambiar Imagen Representativa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input class="div-acercaDe mt-2 ms-2 rounded" type="file" alife-file-to-base64
+                        (onFileChanged)="onFileChanged($event)" accept=".png, .jpg, .jpeg">
+                </div>
+                <div class="modal-footer">
+                    <p *ngIf="noTieneContenido" class="text-danger">{{mensajeDeError}}</p>
+                    <p class="text-success">{{mensajeDeEnvio}}</p>
+                    <button type="button" class="btn btn-success" (click)="editarImgRepresentativa()">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
