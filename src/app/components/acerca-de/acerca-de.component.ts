@@ -1,17 +1,14 @@
-import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { HammerGestureConfig, HAMMER_LOADER } from '@angular/platform-browser';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SGGuard } from 'src/app/guard/sg.guard';
 import { AcercaDeService } from 'src/app/servicios/acerca-de.service';
-import { AutenticacionService} from 'src/app/servicios/autenticacion.service';
+
 
 @Component({
   selector: 'app-acerca-de',
   templateUrl: './acerca-de.component.html',
   styleUrls: ['./acerca-de.component.css']
 })
-export class AcercaDeComponent implements OnInit {
+export class AcercaDeComponent implements OnInit{
   
 
   miPortfolio:any=[];

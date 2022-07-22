@@ -19,45 +19,30 @@ sumarProyectos(arr : Proyectos):Observable<any>{
 return this.autenticationService.Cliente.post(this.autenticationService.url+"/new/Proyectos", arr );
 }
 
-editProyectosUno( arr :  Proyectos):Observable<any>{
-return this.autenticationService.Cliente.put(this.autenticationService.url+"/modProyectosUno/"+10, arr);
+editProyectos( arr :  Proyectos, id:any):Observable<any>{
+return this.autenticationService.Cliente.put(this.autenticationService.url+"/modProyectos/"+id, arr);
 }
-editProyectosDos( arr :  Proyectos):Observable<any>{
-  return this.autenticationService.Cliente.put(this.autenticationService.url+"/modProyectosDos/"+10, arr);
-  }
-  editProyectosTres( arr :  Proyectos):Observable<any>{
-    return this.autenticationService.Cliente.put(this.autenticationService.url+"/modProyectosTres/"+10, arr);
-    }
-//imagenes
-editImgProyectosUno( arr :  Proyectos):Observable<any>{
-  return this.autenticationService.Cliente.put(this.autenticationService.url+"/modImgProyectosUno/"+10, arr);
-  }
-  editImgProyectosDos( arr :  Proyectos):Observable<any>{
-    return this.autenticationService.Cliente.put(this.autenticationService.url+"/modImgProyectosDos/"+10, arr);
-    }
-    editImgProyectosTres( arr :  Proyectos):Observable<any>{
-      return this.autenticationService.Cliente.put(this.autenticationService.url+"/modImgProyectosTres/"+10, arr);
-      }
 
+//imagenes
+editImgProyectos( arr :  Proyectos, id:any):Observable<any>{
+  return this.autenticationService.Cliente.put(this.autenticationService.url+"/modProyectos/"+id, arr);
+}
+
+/* editImgRepresentativa(arr: Acercade):Observable<any>{
+  return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizarImgRepresentativa/"+3,arr);
+} */
+
+borrarPro(id:any):Observable<any>{
+  return this.autenticationService.Cliente.delete(this.autenticationService.url+"/borrarProyectos/"+id);
+  }
+ 
 }
 
 export interface Proyectos {
-  proNombreUno:String; 
-  proFechaUno :String;
-  proLinkUno:String; 
-  proImgUno :String; 
-  proyectoDescripcionUno:String; 
-  
-  proNombreDos:String; 
-  proFechaDos :String; 
-  proLinkDos :String; 
-  proImgDos :String; 
-  proyectoDescripcionDos:String; 
-  
-  proNombreTres:String; 
-  proFechaTres:String; 
-  proLinkTres:String; 
-  proImgTres:String; 
-  proyectoDescripcionTres:String; 
-  
+  id:number;
+  proNombre:String; 
+  proFecha :String;
+  proLink:String; 
+  proImg:String; 
+  proDescripcion:String; 
   }

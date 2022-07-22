@@ -21,6 +21,8 @@ import { SoftComponent } from './components/soft/soft.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     AlifeFileToBase64Module,
     NgbModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [AutenticacionService,{provide:HTTP_INTERCEPTORS,useClass:InterceptorService, multi:true}],
   bootstrap: [AppComponent]

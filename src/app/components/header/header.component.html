@@ -1,7 +1,4 @@
-
-
-   
-        <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+         <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
             <div *ngIf="oculto" class="pequecontenedor col">
             <input type="text" placeholder="User" formControlName="nombreUsuario" class="form-control" id="usuario">
             <div *ngIf="User?.errors && User?.touched">
@@ -28,72 +25,59 @@
         </div>
     </form>
     
-
-
 <div class="container-flex">
-  
-        <a 
+    <a 
         href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa "
         target="_blank">
         <img class="img-Arg" src="assets/img/ArgPrograma.png" alt="arg" />
     </a>
-  
     
     <ul class="d-flex ul__Icons list-unstyled inline-row">
-        <li class="">
-     <a href="#" class="main-menu__link fa-brands fa-twitter"></a>
+        <li>
+     <a href="https://wa.me/5492984788433" class="main-menu__link fa-brands fa-whatsapp" target="_blank"></a>
  </li>
- <li class="">
-     <a href="#" class="main-menu__link fa-brands fa-linkedin"></a>
+ <li >
+     <a href="https://www.linkedin.com/in/claudio-miguel-olivera-gonzalez/"  target="_blank" class="main-menu__link fa-brands fa-linkedin"></a>
  </li>
- <li class="">
-     <a href="#" class="main-menu__link fa-brands fa-instagram"></a>
+<!--  <li >
+     <a href="#" class="main-menu__link fa-brands fa-instagram" target="_blank" ></a>
+ </li> -->
+ <li >
+     <a href="https://github.com/Claudio-Olivera" class="main-menu__link fa-brands fa-github" target="_blank" ></a>
  </li>
- <li class="">
-     <a href="#" class="main-menu__link fa-brands fa-github"></a>
- </li>
- <li class="">
+ <li >
      <a id="enviar" class="main-menu__link fa-solid fa-user" type="submit"
      [className]="!sgf.canActivate()?'main-menu__link fa-solid fa-user':'main-menu__link fa-solid fa-arrow-right-from-bracket'"
      (click)="mostrar()"></a>
  </li>
 </ul>
-
 </div>
 
 
-<!--Imagen respresentativa agregar esto con solo el #alcanza. -->
 <div class="container-flex">
-    
-    <div class="img1" #img1> 
-
+    <div class="img1" #img1> <!-- le di background usando @viewchild en ts -->
         <a *ngIf="sgf.canActivate()&&miPortfolio.imgRepresentativa!=null" class="btn btn-outline-light align-self-start botonEdit__represent" role="button"
         data-bs-target="#representModal" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i></a>
         <div class="container-fluid d-flex justify-content-center" >    
             <div class="">
                 <h1 class="text-center text-white display-5 titulo mt-3">Claudio Miguel Olivera González</h1>
                 <h2 class="text-center text-white display-6 titulo">Full Stack Developer Junior</h2>
+                <!-- NOTA: Podria haber utilizado mas las interpolaciones con los datos correspondientes, pero preferí no hacerlo, ya que por ejemplo para el nombre que se encuentra en header component queria que se viera siempre independientemente de que llegara o no el dato de la db (evitando asi que quedara el campo vacío en caso de que no hubiera dato.) -->
             </div>
         </div>
         
         <div class="container-flex">
-
             <div class="d-flex justify-content-center">
                 <img class="img-Perfil rounded-circle mb-4 align-self-center" *ngIf="miPortfolio.imgPerfil!=null" src={{miPortfolio.imgPerfil}}/>
                 <!--inico del boton editar img-->
-                <!-- fin de boton editar img -->
-   
                 <div class="d-flex justify-content-center position-absolute">
                     <a *ngIf="sgf.canActivate()&&miPortfolio.imgPerfil!=null" class="align-self-center btn btn-outline-light hover__boton" role="button"
                     data-bs-target="#exampleModal" data-bs-toggle="modal"><i class="fa-solid fa-pencil"></i> </a>
                 </div>
+                <!-- fin de boton editar img -->
             </div>
-            
-
-
         </div>
-
-    </div><!-- div de imagen representativa -->
+    </div>
 </div>
 
   <!-- spinner doble para que sea mas bonito -->
@@ -105,7 +89,7 @@
   <p style="font-size: 20px; color: white">Cargando...</p>></ngx-spinner>
   <!-- fin spinner -->
 
-<!-- ############################ INICIO DE MODALES Y DE SPINNER #################################################### -->
+<!-- ############################ INICIO DE MODALES #################################################### -->
 
     <!-- inicio modal editar imagen -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

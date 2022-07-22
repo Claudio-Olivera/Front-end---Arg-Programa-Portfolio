@@ -1,4 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { of } from 'rxjs';
+
 import { SGGuard } from 'src/app/guard/sg.guard';
 import { ProyectosService } from 'src/app/servicios/proyectos.service';
 
@@ -12,81 +14,76 @@ export class ProyectosComponent implements OnInit {
 
   miPortfolio:any=[];
   
-  nuevoProyecto : Proyectos = { proNombreUno:' ', 
-    proFechaUno :' ', proLinkUno:' ',  proImgUno :' ',   proyectoDescripcionUno:' ',  proNombreDos:' ',  proFechaDos :' ', proLinkDos :' ',  proImgDos:' ',  proyectoDescripcionDos:' ',   proNombreTres:' ',   proFechaTres:' ',  proLinkTres:' ', proImgTres:' ', proyectoDescripcionTres:' '}
+  nuevoProyecto : Proyectos = {id: 0, proNombre: ' ', 
+    proFecha : ' ', proLink: ' ', proImg : ' ', proDescripcion: ' ' }
 
-   editarProyectos : Proyectos = { proNombreUno:' ', 
-    proFechaUno :' ', proLinkUno:' ',  proImgUno : ' ',   proyectoDescripcionUno:' ',  proNombreDos:' ',  proFechaDos :' ', proLinkDos :' ',  proImgDos:' ',  proyectoDescripcionDos:' ',   proNombreTres:' ',   proFechaTres:' ',  proLinkTres:' ', proImgTres:' ', proyectoDescripcionTres:' '}
+  editarProyectos : Proyectos = {id: 0, proNombre: ' ', 
+    proFecha: ' ', proLink: ' ', proImg: ' ', proDescripcion: ' ' }
 
     
     myModal: any = document.getElementById('myModal');
     myInput: any = document.getElementById('myInput');
     
 
- mensajeDeErrorUno:String="";
- mensajeDeEnvioUno:String="";
- noTieneContenidoUno:boolean=false;
- mensajeDeErrorDos:String="";
- mensajeDeEnvioDos:String="";
- noTieneContenidoDos:boolean=false;
- mensajeDeErrorTres:String="";
- mensajeDeEnvioTres:String="";
- noTieneContenidoTres:boolean=false;
+ mensajeDeError:String="";
+ mensajeDeEnvio:String="";
+ noTieneContenido:boolean=false;
+ 
  
  guard=this.SGguard
 
-
-  constructor(private datosPortfolio:ProyectosService, private cd:ChangeDetectorRef, private SGguard:SGGuard) { }
-
-  modal(){
-    this.myModal.addEventListener('shown.bs.modale',  () => {
-   this.myInput.focus()
-  })} 
-  
-  ngOnInit(): void {
-    this.datosPortfolio.obtenerProyectos().subscribe(data=>{
- /*      console.log("Datos de Proyectos :"+ JSON.stringify(data)); */
-      this.miPortfolio=data[0]})
-    }
+ constructor(private datosPortfolio:ProyectosService, private cd:ChangeDetectorRef, private SGguard:SGGuard) { }
+ 
+ modal(){
+   this.myModal.addEventListener('shown.bs.modale',  () => {
+     this.myInput.focus()
+    })} 
     
+    ngOnInit(): void {
+      this.datosPortfolio.obtenerProyectos().subscribe((datos: any)=>{this.miPortfolio.push(datos)})
+     
+     
+    }    
+    
+  
+  
+   /*    this.mybreakpoint = (event.target.innerWidth >= 1000) ? 3:1;
+      this.mybreakpoint = (event.target.innerWidth >= 1400) ? 4:1; */
+      /* this.mybreakpoint = (event.target.innerWidth >= 1000)? 3:1; */
+   
 
-  CambioImgUno(e:any){
-    this.editarProyectos.proImgUno = e[0].base64
+      
+
+    onFileChanged(e:any){
+      this.editarProyectos.proImg = e[0].base64
+      this.nuevoProyecto.proImg = e[0].base64
     }
-    CambioImgDos(a:any){
-      this.editarProyectos.proImgDos = a[0].base64
-      }
-      CambioImgTres(s:any){
-        this.editarProyectos.proImgTres = s[0].base64
+
+ /*  cambioImg(e:any){
+    this.editarProyectos.proImg = e[0].base64
+    } */
+  
+ /*    editarImgPro(){
+      if ( this.editarProyectos.proImg == " "){
+        this.mensajeDeError = "Es obligatorio enviar una imagen";
+        this.noTieneContenido = true}
+        else{ this.datosPortfolio.editImgProyectos(this.editarProyectos,this.editarProyectos.id).subscribe((data: any)=>{
+          this.mensajeDeEnvio = "La imagen fue enviada correctamente";
+          this.noTieneContenido = false
+          window.location.reload()})
         }
-editarImgProUno(){
-  if ( this.editarProyectos.proImgUno ==" "){
-    this.mensajeDeErrorUno = "Es obligatorio enviar una imagen";
-    this.noTieneContenidoUno = true;
-   }
-   else{ this.datosPortfolio.editImgProyectosUno(this.editarProyectos).subscribe((data: any)=>{
-    this.mensajeDeEnvioUno = "La imagen fue enviada correctamente";
-    this.noTieneContenidoUno = false}  )
+      } */
+  
+
+  editar(id:any,k:any,l:any,m:any,n:any,o:any){
+    this.editarProyectos.id=id
+    this.editarProyectos.proNombre=k
+    this.editarProyectos.proFecha=l
+    this.editarProyectos.proLink=m
+    this.editarProyectos.proDescripcion=n
+    this.editarProyectos.proImg=o
     }
-  }
-  editarImgProDos(){
-    if ( this.editarProyectos.proImgDos ==" "){
-      this.noTieneContenidoDos = true; 
-  this.mensajeDeErrorDos = "Es obligatorio enviar una imagen" }
-     else{ this.datosPortfolio.editImgProyectosDos(this.editarProyectos).subscribe((data: any)=>{
-      this.mensajeDeEnvioDos = "La imagen fue enviada correctamente";
-      this.noTieneContenidoDos = false}  )
-      }
-    }
-    editarImgProTres(){
-      if ( this.editarProyectos.proImgTres ==" ")  {
-        this.noTieneContenidoTres = true;
-    this.mensajeDeErrorTres = "Es obligatorio enviar una imagen" }
-       else{ this.datosPortfolio.editImgProyectosTres(this.editarProyectos).subscribe((data: any)=>{
-        this.mensajeDeEnvioTres = "La imagen fue enviada correctamente";
-        this.noTieneContenidoTres = false}  )
-        }
-      }
+  
 
   verPro(){
     this.datosPortfolio.obtenerProyectos().subscribe(data=>{
@@ -95,77 +92,46 @@ editarImgProUno(){
     }
 
   agregarPro(){
-    this.datosPortfolio.sumarProyectos(this.nuevoProyecto).subscribe(
-    data => {
-    console.log(data); } );
+    if ( this.nuevoProyecto.proImg == " "){
+      this.mensajeDeError = "Es obligatorio enviar una imagen";
+      this.noTieneContenido = true}
+      else{
+        this.datosPortfolio.sumarProyectos(this.nuevoProyecto).subscribe(
+          data => {
+            this.mensajeDeEnvio = "La imagen fue enviada correctamente";
+            this.noTieneContenido = false; 
+            console.log(data); 
+            window.location.reload()} );
+          }
   }
   
-      editarProUno(){
-        this.datosPortfolio.editProyectosUno(this.editarProyectos).subscribe(
-          data => {
-            console.log(data); } );
-          } 
-
-          editarProDos(){
-            this.datosPortfolio.editProyectosDos(this.editarProyectos).subscribe(
+      editarPro(){
+        if ( this.editarProyectos.proImg == undefined){
+          this.mensajeDeError = "Es obligatorio enviar una imagen";
+          this.noTieneContenido = true}
+          else{
+            this.datosPortfolio.editProyectos(this.editarProyectos,this.editarProyectos.id).subscribe(
               data => {
-                console.log(data); } );
+                this.mensajeDeEnvio = "La imagen fue enviada correctamente";
+                this.noTieneContenido = false; 
+                console.log(data);
+                window.location.reload()});
               } 
-              editarProTres(){
-                this.datosPortfolio.editProyectosTres(this.editarProyectos).subscribe(
-                  data => {
-                    console.log(data); } );
-                  } 
+        }
+
+   
   
-          eliminarProUno(){
-            this.editarProyectos. proNombreUno="";
-            this.editarProyectos.proFechaUno="";
-            this.editarProyectos.proLinkUno=""
-            this.editarProyectos.proyectoDescripcionUno="";
-            this.datosPortfolio.editProyectosUno(this.editarProyectos).subscribe(
-              (data:any)=>{
-                console.log(data);});
-          }
-
-          eliminarProDos(){
-             this.editarProyectos. proNombreDos="";
-            this.editarProyectos.proFechaDos="";
-            this.editarProyectos.proLinkDos=""
-            this.editarProyectos.proyectoDescripcionDos="";
-            this.datosPortfolio.editProyectosDos(this.editarProyectos).subscribe(
-              (data:any)=>{
-                console.log(data);});
-          }
-
-          eliminarProTres(){
-            this.editarProyectos. proNombreTres="";
-            this.editarProyectos.proFechaTres="";
-            this.editarProyectos.proLinkTres=""
-            this.editarProyectos.proyectoDescripcionTres=""; 
-            this.datosPortfolio.editProyectosTres(this.editarProyectos).subscribe(
-              (data:any)=>{
-                console.log(data);});
+          eliminarPro(){
+            this.datosPortfolio.borrarPro(this.editarProyectos.id).subscribe((data:any)=>{window.location.reload()})
           }
 
 
 }
 export interface Proyectos {
-  proNombreUno:String; 
-  proFechaUno :String;
-  proLinkUno:String; 
-  proImgUno :String; 
-  proyectoDescripcionUno:String; 
-  
-  proNombreDos:String; 
-  proFechaDos :String; 
-  proLinkDos :String; 
-  proImgDos :String; 
-  proyectoDescripcionDos:String; 
-  
-  proNombreTres:String; 
-  proFechaTres:String; 
-  proLinkTres:String; 
-  proImgTres:String; 
-  proyectoDescripcionTres:String; 
-  
+  id:number;
+  proNombre:String; 
+  proFecha :String;
+  proLink:String; 
+  proImg :String; 
+  proDescripcion:String; 
   }

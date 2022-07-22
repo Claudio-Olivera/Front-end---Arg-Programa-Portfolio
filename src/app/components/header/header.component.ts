@@ -16,15 +16,15 @@ mensajeDeError:String="";
 mensajeDeEnvio:String="";
 noTieneContenido:boolean=false;
 
-oculto : boolean= false; //tal vez lo cambio
+oculto : boolean= false; 
 
 editarAcerca : Acercade = { nombres:' ', apellidos: ' ', ocupacion: ' ', sobremi: ' ', email:' ', fechaNacimiento:' ',  imgPerfil : ' ',imgRepresentativa:' ' };
 
 sgf = this.SGguard
 
-/* agregar esto */
 
-  @ViewChild('img1', { static: true })imgRepresent!: ElementRef<HTMLDivElement>;
+
+  @ViewChild('img1', { static: true })imgRepresent!: ElementRef<HTMLDivElement>; //para la imagen representativa.
 
   constructor(private formBuilder:FormBuilder,private datosPortfolio:HeaderServiceService, private SGguard:SGGuard,private auth:AutenticacionService){ 
     this.form=this.formBuilder.group({
@@ -38,14 +38,14 @@ ngOnInit(): void {
     this.miPortfolio=data[0]})   
 }
 
-/* agregar esto */
+
 ngAfterViewChecked(){
   this.imgRepresent.nativeElement.style.background="url("+this.miPortfolio.imgRepresentativa+")"
   this.imgRepresent.nativeElement.style.backgroundAttachment ="fixed"
   this.imgRepresent.nativeElement.style.backgroundSize ="cover"
   this.imgRepresent.nativeElement.style.width ="auto"
   this.imgRepresent.nativeElement.style.height ="fit-content"
-}
+}  //este ngAfterViewChecked referido a la imagenen representativa. 
 
   
 editarImgPerf(){
@@ -71,12 +71,12 @@ editarImgPerf(){
     }
   
     onFileChanged(e:any){
-      this.editarAcerca.imgPerfil = e[0].base64
+      this.editarAcerca.imgPerfil = e[0].base64    
       this.editarAcerca.imgRepresentativa = e[0].base64  
-    }
+    } //se me ocurrió usar alifeTobase64 para poder convertir mis imagenes a base64 y luego enviar el string a mi db. fuente: https://www.youtube.com/watch?v=3Jlv1QNpQIA -->
 
     mostrar(): void{
-      this.oculto =! this.oculto
+      this.oculto =! this.oculto 
 }
 
 get User(){
@@ -90,8 +90,8 @@ get Password(){
 onEnviar(event:Event){
   event.preventDefault;
   this.auth.IniciarSesion(this.form.value||this.auth.currentUserSubject.value).subscribe(data=>{
-    /*   console.log("DATA:" + JSON.stringify(data)); */ //lo comento para que no muestre mi token en consola
-    /* console.log(JSON.stringify (this.auth.currentUserSubject.value)) */ //utilizado para ver el valor
+    /*   console.log("DATA:" + JSON.stringify(data)); */ 
+    /* console.log(JSON.stringify (this.auth.currentUserSubject.value)) */ 
     window.location.reload() 
   })}
   

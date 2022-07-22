@@ -23,15 +23,15 @@ obtenerDatos():Observable<any>{
   }
 
   editDatos( arr :  Acercade):Observable<any>{
-  return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizar/"+1, arr);
+  return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizar/"+3, arr);
 }
 
 editImgPerfil( arr:  Acercade):Observable<any>{
-  return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizarImgPerfil/"+1, arr);
+  return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizarImgPerfil/"+3, arr);
 }
 
 editImgRepresentativa(arr: Acercade):Observable<any>{
-  return this.autenticationService.Cliente.put(this.autenticationService.url+"//actualizarImgRepresentativa/"+1,arr);
+  return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizarImgRepresentativa/"+3,arr);
 }
 
 

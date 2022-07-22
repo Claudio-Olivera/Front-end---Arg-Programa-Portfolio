@@ -1,130 +1,183 @@
 <div class="container-fluid">
-  <article class="container-fluid col-sm-12 col-12 mx-auto card mb-3 bg-dark">
-    
-    <h3 class="h3-titulos pt-4 ps-4 display-6 text-left mb-3">Proyectos
-   
-       <a class=" btn btn-outline-light  hover__boton"  *ngIf="guard.canActivate()" role="button" data-bs-target="#ProyectosModal" data-bs-toggle="modal" ><i class="fa-solid fa-pencil"  ></i></a>
-    
-    </h3>
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <a href="{{miPortfolio.proLinkUno}}" target="_blank"> 
-        <img src="{{miPortfolio.proImgUno}}" class="img-carrousel" alt="...">
-        </a>
-        <div class="carousel-caption d-block p-0 mt-5 ">
-          <h5 class="d-none d-sm-block">{{miPortfolio.proNombreUno}}</h5>
-          <p class="p-0 mb-0 d-none d-sm-block ">Fecha de finalización:{{miPortfolio.proFechaUno}}</p>
-          <p class="mb-sm-5 ">{{miPortfolio.proyectoDescripcionUno}}</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <a href="{{miPortfolio.proLinkDos}}" target="_blank">
-          <img src="{{miPortfolio.proImgDos}}"class="img-carrousel" alt="...">
-        </a>
-        <div class="carousel-caption  d-block p-0 mt-5 ">
-          <h5 class="d-none d-sm-block">{{miPortfolio.proNombreDos}}</h5>
-          <p class="p-0 mb-0 d-none d-sm-block">Fecha de finalización:{{miPortfolio.proFechaDos}}</p>
-          <p class="mb-sm-5">{{miPortfolio.proyectoDescripcionDos}}</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <a href="{{miPortfolio.proLinkTres}}" target="_blank">
-        <img src="{{miPortfolio.proImgTres}}" class="img-carrousel" alt="...">
-      </a>
-        <div class="carousel-caption d-block  p-0 mt-5">
-          <h5 class="d-none d-sm-block" >{{miPortfolio.proNombreTres}}</h5>
-          <p class="p-0 mb-0 d-none d-sm-block"> Fecha de finalización:{{miPortfolio.proFechaTres}}</p>
-            <p class="mb-sm-5">{{miPortfolio.proyectoDescripcionTres}}</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </button>
+  <div class=" container-fluid  col-sm-12 col-12 card  bg-dark "  >
+    <h3 class="h3-titulos pt-4 display-6 text-center  mb-2 mt-1">Proyectos
+      <a
+       *ngIf="guard.canActivate()"
+      class="btn btn-outline-light agregar__boton mb-3"
+      role="button" title="Agregar Información"
+      data-bs-target="#EducacionModalNuevo"
+      data-bs-toggle="modal"
+      ><i class="fa-solid fa-square-plus"></i
+    ></a>
+</h3>
 
+
+<span *ngFor="let listas of miPortfolio" class="row align-content-center d-flex justify-content-center">
+    <div  *ngFor="let miPortfolio of listas" class="col-12 col-md-5" >
+      <input [(ngModel)]="miPortfolio.id" #identificador style="display: none;"><br> 
+      <mat-card class=" bg-dark bg-gradient text-white">
+        <mat-card-header>
+          <mat-card-title>{{miPortfolio.proNombre}}</mat-card-title>
+          <mat-card-subtitle class="text-white">{{miPortfolio.proFecha}}</mat-card-subtitle>
+        </mat-card-header>
+        <a href="{{miPortfolio.proLink}}" target="_blank" class="d-flex align-content-center d-flex justify-content-center">  
+          <img  class="img-fluid mx-auto " src="{{miPortfolio.proImg}}"  alt="Imagen del proyecto">
+        </a>
+        <mat-card-content>
+          <p class="mt-2 text-center">
+            {{miPortfolio.proDescripcion}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a
+          class="btn btn-outline-light hover__boton"
+          role="button"
+          data-bs-target="#EducacionModal"
+          data-bs-toggle="modal"
+          *ngIf="guard.canActivate()"
+          (click)="editar(identificador.value, miPortfolio.proNombre,miPortfolio.proFecha,miPortfolio.proLink,miPortfolio.proDescripcion, miPortfolio.img)" title="Editar Tarjeta"><i class="fa-solid fa-pencil"></i></a>
+        </mat-card-actions>
+      </mat-card>
+</div>
+</span>
+<!-- material -->
+
+
+    <div
+    class="modal fade"
+    id="EducacionModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Editar Proyecto
+          </h5>
+          <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <p class="form-control">
+            Escribe el nombre del proyecto
+            <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="editarProyectos.proNombre"
+            
+            />Indica la fecha de de finalizacion
+            <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="editarProyectos.proFecha"
+            />Link del proyecto<input
+            class="form-control"
+            type="text"
+            [(ngModel)]="editarProyectos.proLink"/>
+            Descripcion del proyecto
+            <textarea
+            class="form-control"
+            rows="4" [(ngModel)]="editarProyectos.proDescripcion"></textarea>
+            Imagen del Proyecto
+              <input class="div-acercaDe mt-2 ms-2 rounded" type="file" alife-file-to-base64
+                  (onFileChanged)="onFileChanged($event)" accept=".png, .jpg, .jpeg">
+          </p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p *ngIf="noTieneContenido" class="text-danger">{{mensajeDeError}}</p>
+      <p class="text-success">{{mensajeDeEnvio}}</p>
+      <button type="button" class="btn btn-success fa-solid fa-floppy-disk" (click)="editarPro()" title="Guardar Cambios">
+      </button>
+        
+        <button
+        type="button"
+        class="btn btn-danger fa-solid fa-trash-can" title="Borrar Tarjeta"
+        (click)="eliminarPro()"
+        >
+        
+      </button>
+    </div>
   </div>
-
-
-       <!-- Inicio boton editar Proyectos--> 
-      <!-- ACA  HABIA NG TEMPLATE -->
-
-       <!-- final boton editar Proyectos--> 
-</article>
+</div>
 </div>
 
 
- <div class="modal fade" id="ProyectosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Proyectos</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
 
-      <div class="form-control">
-        <p>Cambio de imagen del Primer Proyecto</p>
-    <input class="div-acercaDe mt-2 ms-2 rounded" type="file" alife-file-to-base64 (onFileChanged)="CambioImgUno($event)"  accept=".png, .jpg, .jpeg" >
-  
-      <p *ngIf="noTieneContenidoUno" class="text-danger" >{{mensajeDeErrorUno}}</p> 
-      <p class="text-success">{{mensajeDeEnvioUno}}</p>
-      <button type="button" class="btn btn-success" (click)="editarImgProUno()">Enviar Imagen</button>
+</div>
 
-      <p class="mt-2">Cambio de datos del Primer Proyecto</p>
-      <p > Titulo de Primer Proyecto<input class="form-control" type="text" [(ngModel)]="editarProyectos.proNombreUno" >Fecha de Primer Proyecto <input class="form-control" type="text" [(ngModel)]="editarProyectos.proFechaUno" >Descripcion de Primer Proyecto <textarea class="form-control" rows="4" [(ngModel)]="editarProyectos.proyectoDescripcionUno" ></textarea>Link de Primer Proyecto <input class="form-control" type="text" [(ngModel)]="editarProyectos.proLinkUno"></p>
+</div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="editarProUno()">Enviar Datos</button>
-        <button type="button" class="btn btn-danger" (click)="eliminarProUno()">Borrar Datos</button>
-      </div>
-
+<div
+class="modal fade"
+id="EducacionModalNuevo"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">
+        Agregar Proyectos
+      </h5>
+      <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+      ></button>
     </div>
+    <div class="modal-body">
+      <div class="container-fluid">
+        <p class="form-control">
+          Nombre del Proyecto<input
+          class="form-control"
+          type="text"
+          [(ngModel)]="nuevoProyecto.proNombre"
+          />Fecha de finalizacion
+          <input
+          class="form-control"
+          type="text"
+          [(ngModel)]="nuevoProyecto.proFecha"/>
+          Link del proyecto
+          <input
+          class="form-control"
+          type="text"
+          [(ngModel)]="nuevoProyecto.proLink"
+          />Descripcion del proyecto
+          <textarea
+          class="form-control"
+          rows="4"
+          [(ngModel)]="nuevoProyecto.proDescripcion"
+          ></textarea>
+          Imagen del Proyecto
+          <input class="div-acercaDe mt-2 ms-2 rounded" type="file" alife-file-to-base64
+              (onFileChanged)="onFileChanged($event)" accept=".png, .jpg, .jpeg">
+        </p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <p *ngIf="noTieneContenido" class="text-danger">{{mensajeDeError}}</p>
+    <p class="text-success">{{mensajeDeEnvio}}</p>
+    <button type="button" class="btn btn-success fa-solid fa-floppy-disk" title="Guardar"(click)="agregarPro()" >
+    </button>
+    
+    
+  </div>
+</div>
+</div>
+</div>
 
 
 
 
-    <div class=" form-control mt-3">
-    <p>Cambio de imagen del Segundo Proyecto</p>
-      <input class="div-acercaDe mt-2 ms-2 rounded" type="file" alife-file-to-base64 (onFileChanged)="CambioImgDos($event)"  accept=".png, .jpg, .jpeg" >
-   
-        <p *ngIf="noTieneContenidoDos" class="text-danger" >{{mensajeDeErrorDos}}</p> 
-        <p class="text-success">{{mensajeDeEnvioDos}}</p>
-        <button type="button" class="btn btn-success" (click)="editarImgProDos()">Enviar Imagen</button>
-        
-        <p class="mt-2">Cambio de datos del Segundo Proyecto</p>
-        <p > Titulo de Segundo Proyecto<input class="form-control" type="text" [(ngModel)]="editarProyectos.proNombreDos" >Fecha de Segundo Proyecto <input class="form-control" type="text" [(ngModel)]="editarProyectos.proFechaDos" >Descripcion de Segundo Proyecto <textarea class="form-control" rows="4" [(ngModel)]="editarProyectos.proyectoDescripcionDos" ></textarea>Link de Segundo Proyecto <input class="form-control" type="text" [(ngModel)]="editarProyectos.proLinkDos"></p>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" (click)="editarProDos()">Enviar Datos</button>
-          <button type="button" class="btn btn-danger" (click)="eliminarProDos()">Borrar Datos</button>
-        </div>
-
-      </div>
 
 
-      <div class="form-control mt-3">
-      <p>Cambio de imagen del Tercer Proyecto</p>
-      <input class="div-acercaDe mt-2 ms-2 rounded" type="file" alife-file-to-base64 (onFileChanged)="CambioImgTres($event)"  accept=".png, .jpg, .jpeg">
-        
-        <p *ngIf="noTieneContenidoTres" class="text-danger" >{{mensajeDeErrorTres}}</p> 
-        <p class="text-success">{{mensajeDeEnvioTres}}</p>
-        <button type="button" class="btn btn-success" (click)="editarImgProTres()">Enviar Imagen</button>
-
-        <p class="mt-2">Cambio de datos del Tercer Proyecto</p>
-        <p > Titulo de Tercer Proyecto<input class="form-control" type="text" [(ngModel)]="editarProyectos.proNombreTres" >Fecha de Tercer Proyecto <input class="form-control" type="text" [(ngModel)]="editarProyectos.proFechaTres" >Descripcion de Tercer Proyecto <textarea class="form-control" rows="4" [(ngModel)]="editarProyectos.proyectoDescripcionTres" ></textarea>Link de Tercer Proyecto <input class="form-control" type="text" [(ngModel)]="editarProyectos.proLinkTres"></p>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" (click)="editarProTres()">Enviar Datos</button>
-          <button type="button" class="btn btn-danger" (click)="eliminarProTres()">Borrar Datos</button>
-        </div>
-      </div>
- 

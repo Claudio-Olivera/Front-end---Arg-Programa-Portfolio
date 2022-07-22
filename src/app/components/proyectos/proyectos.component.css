@@ -48,6 +48,45 @@
    .hover__boton:hover{
     background-color:#005afc;
     color: rgb(255, 255, 255);
-    font-size: 22px;
-  
+    font-size: 22px; 
  }
+
+ .agregar__boton{
+    line-height: 170%;
+    height: 40px;
+    width: 40px;
+    color: black;
+    background-color:rgb(2, 247, 137);
+}
+  .agregar__boton:hover{
+  background-color:#005afc;
+  font-size: 20px;
+  color: white;
+}
+    
+ img{
+    box-shadow: 2px 2px 8px 1px rgba(2,247,137,0.9);
+    -webkit-box-shadow: 2px 2px 8px 1px rgba(2,247,137,0.9);
+    -moz-box-shadow: 2px 2px 8px 1px rgba(2,247,137,0.9);
+    border-radius: 5px;
+ }
+
+    @media screen and (min-width :767px ) {
+        
+        img {
+            width: 100% ;
+           height: 250px ;
+       max-width: 300px ;
+       max-height: 250px ;
+       object-fit: cover ;
+    }
+    }
+
+   @media screen and (max-width :767px ) {
+        img {
+            width: 100% ;
+    } 
+     } 
+    
+
+

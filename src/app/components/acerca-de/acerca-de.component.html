@@ -1,5 +1,5 @@
 
-   <div class="container-fluid">
+   <div class="container">
      <article class="container-fluid col-sm-12 col-12 mx-auto card mb-3 bg-dark">
        <h3 class="h3-titulos pt-4 ps-4 display-6 text-left">Acerca de mi</h3>
 
@@ -9,27 +9,13 @@
 
        <div class="container d-flex flex-column" >
           <p class="row-2 text-white text-parrafos">{{miPortfolio.sobremi}}
-          </p>
+          </p>  
 
-          <h4 class="h3-acercaDe text-center mt-3" *ngIf="miPortfolio.fechaNacimiento!=null">
-            Datos Personales</h4>
-
-            
-            <p class="row-2 text-white text-parrafos" *ngIf="miPortfolio.fechaNacimiento!=null">Teléfono: +54 02984-788433
-            </p>
-            <p class="row-2 text-white text-parrafos" *ngIf="miPortfolio.fechaNacimiento!=null" >Residencia: General Roca, provincia de Rio Negro, Argentina</p>
-            <p class="row-2 text-white text-parrafos" *ngIf="miPortfolio.fechaNacimiento!=null" >DNI: 35.059.357
+          <a class="h3-acercaDe text-center " href="https://drive.google.com/file/d/1nT0rlYgdC63L4p1OzZnxBy6F3qIGiLX3/view?usp=sharing" target="_blank">Ver Currículum Vitae</a>
+            <p class="row-2 text-white text-parrafos" *ngIf="miPortfolio.email!=null" >Email: {{miPortfolio.email}}
             </p> 
-            <p class="row-2 text-white text-parrafos" *ngIf="miPortfolio.fechaNacimiento!=null" >Fecha de Nacimiento:  {{miPortfolio.fechaNacimiento}}
-            </p> 
-            <p class="row-2 text-white text-parrafos" *ngIf="miPortfolio.fechaNacimiento!=null" >Estado Civil: Soltero
-            </p> 
-            <p class="row-2 text-white text-parrafos" *ngIf="miPortfolio.fechaNacimiento!=null" >Nacionalidad: Argentino
-            </p> 
-
-            
-            <a class="h3-acercaDe text-center " href="https://drive.google.com/file/d/1nT0rlYgdC63L4p1OzZnxBy6F3qIGiLX3/view?usp=sharing">Ver Currículum Vitae</a>
-                  <!-- aca agregar mas datos. -->
+                  <!-- NOTA: Podria haber utilizado mas las interpolaciones con los datos correspondientes, pero preferí no hacerlo, ya que por ejemplo para el nombre que se encuentra en header component queria que se viera siempre independientemente de que llegara o no el dato de la db (evitando asi que quedara el campo vacío en caso de que no hubiera dato.) -->
+                
         </div>
     
       </article>
@@ -45,6 +31,7 @@
           <div class="container-fluid">
           <p class="form-control" >Escribe tus nombres <input class="form-control" type="text" [(ngModel)]="editarAcerca.nombres" ></p>
           <p class="form-control" >Escribe tus apellidos <input class="form-control" type="text" [(ngModel)]="editarAcerca.apellidos" ></p> 
+          <p class="form-control" >Escribe tu email <input class="form-control" type="text" [(ngModel)]="editarAcerca.email" ></p>
           <p class="form-control" >Escribe tu ocupación <input  class="form-control" type="text" [(ngModel)]="editarAcerca.ocupacion" ></p> 
           <p class="form-control" >Escribe sobre tí <textarea class="form-control" rows="8" [(ngModel)]="editarAcerca.sobremi" ></textarea></p>  
         </div>
