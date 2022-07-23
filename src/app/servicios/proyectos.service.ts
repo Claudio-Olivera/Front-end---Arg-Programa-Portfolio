@@ -12,9 +12,9 @@ export class ProyectosService {
 
 //Proyectos
 obtenerProyectos():Observable<any>{
-  return this.autenticationService.Cliente.get(this.autenticationService.url+"/ver/Proyectos"); //aca va la url request de datos
+  return this.autenticationService.Cliente.get(this.autenticationService.url+"/ver/Proyectos"); 
 }
-//datos
+
 sumarProyectos(arr : Proyectos):Observable<any>{
 return this.autenticationService.Cliente.post(this.autenticationService.url+"/new/Proyectos", arr );
 }
@@ -23,14 +23,10 @@ editProyectos( arr :  Proyectos, id:any):Observable<any>{
 return this.autenticationService.Cliente.put(this.autenticationService.url+"/modProyectos/"+id, arr);
 }
 
-//imagenes
+//Imagenes de proyectos
 editImgProyectos( arr :  Proyectos, id:any):Observable<any>{
-  return this.autenticationService.Cliente.put(this.autenticationService.url+"/modProyectos/"+id, arr);
+  return this.autenticationService.Cliente.put(this.autenticationService.url+"/modImgProyectos/"+id, arr);
 }
-
-/* editImgRepresentativa(arr: Acercade):Observable<any>{
-  return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizarImgRepresentativa/"+3,arr);
-} */
 
 borrarPro(id:any):Observable<any>{
   return this.autenticationService.Cliente.delete(this.autenticationService.url+"/borrarProyectos/"+id);

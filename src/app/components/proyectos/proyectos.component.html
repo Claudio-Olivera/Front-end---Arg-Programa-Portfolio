@@ -13,22 +13,22 @@
 
 
 <span *ngFor="let listas of miPortfolio" class="row align-content-center d-flex justify-content-center">
-    <div  *ngFor="let miPortfolio of listas" class="col-12 col-md-5" >
+    <div  *ngFor="let miPortfolio of listas" class="col-12 col-md-5 mb-3" >
       <input [(ngModel)]="miPortfolio.id" #identificador style="display: none;"><br> 
-      <mat-card class=" bg-dark bg-gradient text-white">
-        <mat-card-header>
-          <mat-card-title>{{miPortfolio.proNombre}}</mat-card-title>
-          <mat-card-subtitle class="text-white">{{miPortfolio.proFecha}}</mat-card-subtitle>
-        </mat-card-header>
+      <div class="card-body bg-sub rounded bg-dark bg-gradient text-white">
+        <div >
+          <div class="card-title text-center display-6">{{miPortfolio.proNombre}}</div>
+          <div class="card-subtitle  mb-2 text-white">{{miPortfolio.proFecha}}</div>
+        </div>
         <a href="{{miPortfolio.proLink}}" target="_blank" class="d-flex align-content-center d-flex justify-content-center">  
-          <img  class="img-fluid mx-auto " src="{{miPortfolio.proImg}}"  alt="Imagen del proyecto">
+          <img  class="img-fluid mx-auto rounded" src="{{miPortfolio.proImg}}"  alt="Imagen del proyecto">
         </a>
-        <mat-card-content>
+        <div class="card-text">
           <p class="mt-2 text-center">
             {{miPortfolio.proDescripcion}}
           </p>
-        </mat-card-content>
-        <mat-card-actions>
+        </div>
+        <div class="d-flex justify-content-center">
           <a
           class="btn btn-outline-light hover__boton"
           role="button"
@@ -36,11 +36,11 @@
           data-bs-toggle="modal"
           *ngIf="guard.canActivate()"
           (click)="editar(identificador.value, miPortfolio.proNombre,miPortfolio.proFecha,miPortfolio.proLink,miPortfolio.proDescripcion, miPortfolio.img)" title="Editar Tarjeta"><i class="fa-solid fa-pencil"></i></a>
-        </mat-card-actions>
-      </mat-card>
+        </div>
+      </div>
 </div>
 </span>
-<!-- material -->
+
 
 
     <div
@@ -65,7 +65,7 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <p class="form-control">
+          <div class="form-control">
             Escribe el nombre del proyecto
             <input
             class="form-control"
@@ -84,16 +84,21 @@
             Descripcion del proyecto
             <textarea
             class="form-control"
-            rows="4" [(ngModel)]="editarProyectos.proDescripcion"></textarea>
-            Imagen del Proyecto
-              <input class="div-acercaDe mt-2 ms-2 rounded" type="file" alife-file-to-base64
-                  (onFileChanged)="onFileChanged($event)" accept=".png, .jpg, .jpeg">
-          </p>
+            rows="4" [(ngModel)]="editarProyectos.proDescripcion">
+          
+          </textarea>
+          Imagen del Proyecto
+          <input class="div-acercaDe mt-2 ms-2 rounded" type="file" alife-file-to-base64
+          (onFileChanged)="onFileChanged($event)" accept=".png, .jpg, .jpeg">
+          <p *ngIf="noTieneContenido" class="text-danger">{{mensajeDeError}}</p>
+          <p class="text-success">{{mensajeDeEnvio}}</p>
+          <button type="button" class="btn btn-success fa-solid fa-image" (click)="editarImgPro()" title="Guardar Imagen">
+          </button>
+                </div>
       </div>
     </div>
     <div class="modal-footer">
-      <p *ngIf="noTieneContenido" class="text-danger">{{mensajeDeError}}</p>
-      <p class="text-success">{{mensajeDeEnvio}}</p>
+
       <button type="button" class="btn btn-success fa-solid fa-floppy-disk" (click)="editarPro()" title="Guardar Cambios">
       </button>
         
@@ -165,8 +170,7 @@ aria-hidden="true"
     </div>
   </div>
   <div class="modal-footer">
-    <p *ngIf="noTieneContenido" class="text-danger">{{mensajeDeError}}</p>
-    <p class="text-success">{{mensajeDeEnvio}}</p>
+  
     <button type="button" class="btn btn-success fa-solid fa-floppy-disk" title="Guardar"(click)="agregarPro()" >
     </button>
     

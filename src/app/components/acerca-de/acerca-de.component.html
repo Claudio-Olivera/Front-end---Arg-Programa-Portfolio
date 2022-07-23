@@ -10,14 +10,14 @@
        <div class="container d-flex flex-column" >
           <p class="row-2 text-white text-parrafos">{{miPortfolio.sobremi}}
           </p>  
-
-          <a class="h3-acercaDe text-center " href="https://drive.google.com/file/d/1nT0rlYgdC63L4p1OzZnxBy6F3qIGiLX3/view?usp=sharing" target="_blank">Ver Currículum Vitae</a>
+          
+          <!-- NOTA: Podria haber utilizado mas las interpolaciones con los datos correspondientes, pero preferí no hacerlo, ya que por ejemplo para el nombre que se encuentra en header component queria que se viera siempre independientemente de que llegara o no el dato de la db (evitando asi que quedara el campo vacío en caso de que no hubiera dato.) -->
+          <a class="h3-acercaDe text-center " href="{{miPortfolio.urlCV}}" target="_blank">Ver Currículum Vitae</a>
             <p class="row-2 text-white text-parrafos" *ngIf="miPortfolio.email!=null" >Email: {{miPortfolio.email}}
             </p> 
-                  <!-- NOTA: Podria haber utilizado mas las interpolaciones con los datos correspondientes, pero preferí no hacerlo, ya que por ejemplo para el nombre que se encuentra en header component queria que se viera siempre independientemente de que llegara o no el dato de la db (evitando asi que quedara el campo vacío en caso de que no hubiera dato.) -->
-                
-        </div>
-    
+            <p class="row-2 text-white text-parrafos" *ngIf="miPortfolio.telefono!=null" >Celular: {{miPortfolio.telefono}}
+            </p>
+          </div>
       </article>
   </div>
   <div  class="modal fade" id="acercaDeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -33,8 +33,11 @@
           <p class="form-control" >Escribe tus apellidos <input class="form-control" type="text" [(ngModel)]="editarAcerca.apellidos" ></p> 
           <p class="form-control" >Escribe tu email <input class="form-control" type="text" [(ngModel)]="editarAcerca.email" ></p>
           <p class="form-control" >Escribe tu ocupación <input  class="form-control" type="text" [(ngModel)]="editarAcerca.ocupacion" ></p> 
+          <p class="form-control" >Escribe tu fecha de nacimiento <input  class="form-control" type="text" [(ngModel)]="editarAcerca.fechaNacimiento"></p>
+          <p class="form-control" >Coloca tu link del C.V <input  class="form-control" type="text" [(ngModel)]="editarAcerca.urlCV"></p>
+          <p class="form-control" >Escribe tu número de teléfono <input  class="form-control" type="text" [(ngModel)]="editarAcerca.telefono"></p> 
           <p class="form-control" >Escribe sobre tí <textarea class="form-control" rows="8" [(ngModel)]="editarAcerca.sobremi" ></textarea></p>  
-        </div>
+        </div>    <!-- NOTA: Acá decidí hacer el modal pensando en que alguien mas rellenara los campos, aunque al ser de uso personal mio no tiene mucho sentido,pero decidi dejarlo asi, por eso las frases estan hablando refiriendose a alguien mas, y no a mi mismo. -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" (click)="editarDatos()">Enviar</button>

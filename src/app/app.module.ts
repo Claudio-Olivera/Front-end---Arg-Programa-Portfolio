@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
-import { SkillsComponent } from './components/skills/skills.component';
+
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -21,8 +21,12 @@ import { SoftComponent } from './components/soft/soft.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
+
+import { HardSkillsComponent } from './components/hard-skills/hard-skills.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
+
+
 
 @NgModule({
   declarations: [
@@ -31,11 +35,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     AcercaDeComponent,
     ExperienciaComponent,
     EducacionComponent,
-    SkillsComponent,
     ProyectosComponent,
     FooterComponent,
     SoftComponent,
     NavegacionComponent,
+    HardSkillsComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,10 +52,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     AlifeFileToBase64Module,
     NgbModule,
     NgxSpinnerModule,
-    MatCardModule,
-    MatGridListModule
+    NgCircleProgressModule.forRoot()
   ],
   providers: [AutenticacionService,{provide:HTTP_INTERCEPTORS,useClass:InterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  
+}

@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SGGuard } from 'src/app/guard/sg.guard';
 import { AcercaDeService } from 'src/app/servicios/acerca-de.service';
@@ -9,16 +10,10 @@ import { AcercaDeService } from 'src/app/servicios/acerca-de.service';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit{
+miPortfolio:any=[];
+
+editarAcerca : Acercade = { nombres:' ', apellidos: ' ', ocupacion: ' ', sobremi: ' ', email:' ', fechaNacimiento:' ',  imgPerfil : ' ',imgRepresentativa:' ', telefono:' ', urlCV:' ' };
   
-
-  miPortfolio:any=[];
-
-  nuevoAcerca : Acercade = { nombres:' ', apellidos: ' ', ocupacion: ' ', sobremi: ' ', email:' ', fechaNacimiento: ' ',  imgPerfil : ' ',imgRepresentativa:' ' };
-
-  editarAcerca : Acercade = { nombres:' ', apellidos: ' ', ocupacion: ' ', sobremi: ' ', email:' ', fechaNacimiento:' ',  imgPerfil : ' ',imgRepresentativa:' ' };
-  
-
-
 myModal: any = document.getElementById('myModal');
 myInput: any = document.getElementById('myInput');
 mensajeDeError:String="";
@@ -46,7 +41,6 @@ constructor(private datosPortfolio:AcercaDeService,private cd:ChangeDetectorRef,
     this.editarAcerca=this.miPortfolio;
   }
 
-
   onFileChanged(e:any){
     this.editarAcerca.imgPerfil = e[0].base64
     }
@@ -73,12 +67,6 @@ editarImgPerf(){
     this.miPortfolio=data [0]})
   }
 
-  agregarDatos(){
-    this.datosPortfolio.sumarDatos(this.nuevoAcerca).subscribe(
-    (data: any) => {
-    console.log(data);});
-  }
-
  editarDatos(){
     this.datosPortfolio.editDatos(this.editarAcerca).subscribe(
     (data: any) => {
@@ -90,11 +78,17 @@ editarImgPerf(){
     this.editarAcerca.apellidos="";
     this.editarAcerca.ocupacion="";
     this.editarAcerca.sobremi="";
+    this.editarAcerca.email="";
+    this.editarAcerca.telefono="";
+    this.editarAcerca.urlCV="";
     this.datosPortfolio.editDatos(this.editarAcerca).subscribe(
       (data:any)=>{
         console.log(data);});
       }
-  
+
+  // en este component decidi no hacer peticiones ni para eliminar ni para crear, ya que siempre sera la misma persona y los mismos datos. la funcion eliminarDatos() , esta funcionando realmente con un PUT que reemplaza los datos existentes por string vacio, esto solo será de esta manera para este componente y el resto de los componentes si tendra una opcion de eliminacion utilizando DELETE.
+
+
   }  
 
   export interface Acercade{
@@ -106,4 +100,6 @@ editarImgPerf(){
     fechaNacimiento:string;
     imgPerfil:string;
     imgRepresentativa:string;
+    telefono:string;
+    urlCV:string;
   }

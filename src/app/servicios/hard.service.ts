@@ -21,12 +21,18 @@ export class SkillsService {
   return this.autenticationService.Cliente.put(this.autenticationService.url+"/modHard/"+id, arr);
 }
 
+  
+borrarHard(id:any):Observable<any>{
+  return this.autenticationService.Cliente.delete(this.autenticationService.url+"/borrarHard/"+id);
+  }
+
+
+
 }
 export interface  Hard {
-  primercirculo:Number;
-  segundocirculo:Number;
-  tercercirculo:Number;
-  cuartocirculo:Number;
-  quintocirculo:Number;
-  sextocirculo:Number;
+  id:Number;
+  circulo:Number;
+  icono:String;
+  nombre:String;
+  color:String;
 }

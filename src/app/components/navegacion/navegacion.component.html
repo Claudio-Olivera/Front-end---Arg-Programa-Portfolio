@@ -1,28 +1,12 @@
-<!--   <div class="container">
-        <nav class="d-flex text-center d-row justify-content-center list-unstyled">
-                <a routerLink="/acerca" class="text-decoration-none" href="#"> <li class="h3-acercaDe mt-3 p-2 m-3 ">Acerca de mi</li> </a> 
-                <a routerLink="/educacion" class="text-decoration-none"> <li class="h3-acercaDe mt-3 p-2 m-3 ">Educacion</li> </a>   
-                <a routerLink="/experiencia" class="text-decoration-none" href="#"> <li class="h3-acercaDe mt-3 p-2 m-3 ">Experiencia</li> </a> 
-                <a routerLink="/proyectos" class="text-decoration-none" href="#"> <li class="h3-acercaDe mt-3 p-2 m-3 ">Proyectos</li> </a>
-                <a routerLink="/hard" class="text-decoration-none" > <li class="h3-acercaDe mt-3 p-2 m-3 ">Hard Skills</li> </a> 
-                <a routerLink="/soft" class="text-decoration-none" href="#"> <li class="h3-acercaDe mt-3 p-2 m-3 ">Soft Skills</li> </a> 
-        </nav>
-       
-         
-         <router-outlet></router-outlet>
-</div> -->
 <div class="container">
 <nav class="navbar navbar-expand-lg">
           <h3 class="navbar "></h3>
-          <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
           <button class="navbar-toggler mb-2 "  style="color: rgb(2, 247, 137);" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
             &#9776;
           </button>
-          <!-- Step 2: Add the ngbCollapse directive to the element below. -->
           <div  [ngbCollapse]="isMenuCollapsed" class=" bg-dark collapse navbar-collapse row text-align-center rounded-3 ">
             <ul class="navbar-nav bg-dark rounded-3 ">
-              <li class="nav-item active col-ms-3 text-center" >
-                <!-- Step 4: Close the menu when a link is clicked. -->
+              <li class="nav-item active col-ms-3 text-center">
                 <a routerLink="/acerca" class="nav-link h3-acercaDe clicks  justify-content-center " (click)="isMenuCollapsed = true">Home</a>
               </li>
               <li class=" nav-item col-ms-3 "style="margin:0 auto" >
@@ -43,5 +27,4 @@
         </ul>
 </div>
 </nav>
-
 </div>

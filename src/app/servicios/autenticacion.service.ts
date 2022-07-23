@@ -9,10 +9,10 @@ import { map } from 'rxjs/operators';
 
 
 export class AutenticacionService {
-url:string = "https://claudiooliveraportfolio.up.railway.app" ;
+/* url:string = "https://claudiooliveraportfolio.up.railway.app" ; utilizada para hacer pruebas debido a las constantes caidas de heroku*/
+/* url = "http://localhost:8080"; */
 
-//url="http://localhost:8080/auth/login";
-//url = "http://localhost:8080";
+url:string = "https://claudio-olivera-gonz-portfolio.herokuapp.com";
 
 currentUserSubject:BehaviorSubject<any>;
 Cliente=this.http;
