@@ -1,3 +1,7 @@
+# Uso de FontAwesome
+https://fontawesome.com
+npm i @fortawesome/fontawesome-free
+
 # Uso de ngxSpinner
 https://www.npmjs.com/package/ngx-spinner 
 ng add ngx-spinner
