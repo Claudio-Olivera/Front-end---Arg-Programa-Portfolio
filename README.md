@@ -1,16 +1,21 @@
 # Uso de FontAwesome
 https://fontawesome.com
+
 npm i @fortawesome/fontawesome-free
 
 # Uso de ngxSpinner
 https://www.npmjs.com/package/ngx-spinner 
+
 ng add ngx-spinner
 
 # Uso de AlifeFiletoBase64
 https://www.npmjs.com/package/alife-file-to-base64                      
+
 npm install alife-file-to-base64 --save
 
 # Uso de boostrap 5
+https://getbootstrap.com
+
 npm install boostrap 
 
 Agregar luego en Angular.json las rutas de node modules correspondientes a los archivos de boostrap con los que se desea trabajar 
