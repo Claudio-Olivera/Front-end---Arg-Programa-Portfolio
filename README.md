@@ -1,3 +1,31 @@
+# Uso de FontAwesome
+https://fontawesome.com
+
+npm i @fortawesome/fontawesome-free
+
+# Uso de ngxSpinner
+https://www.npmjs.com/package/ngx-spinner 
+
+ng add ngx-spinner
+
+# Uso de AlifeFiletoBase64
+https://www.npmjs.com/package/alife-file-to-base64                      
+
+npm install alife-file-to-base64 --save
+
+# Uso de boostrap 5
+https://getbootstrap.com
+
+npm install boostrap 
+
+Agregar luego en Angular.json las rutas de node modules correspondientes a los archivos de boostrap con los que se desea trabajar 
+
+# Uso de ng-progress-circle
+https://www.npmjs.com/package/ng-circle-progress                        
+npm install ng-circle-progress 
+
+(NOTA: notar la diferencia en su utilización entre la version 13 de angular y versiones anteriores en el github del creador, disponible en el enlace de arriba.)
+
 # Usodetemplate
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
