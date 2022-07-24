@@ -10,13 +10,13 @@ import { SoftComponent } from 'src/app/components/soft/soft.component';
 import { SGGuard } from 'src/app/guard/sg.guard';
 
 const routes: Routes = [
-  { path:'', redirectTo: 'acerca', pathMatch: 'full' },
-  { path: 'educacion', component: EducacionComponent, children:[{path:'editarHome',component: EducacionComponent, canLoad:[SGGuard]}]},
-  { path:'acerca',component:AcercaDeComponent, children:[{path:'editarHome',component: AcercaDeComponent, canLoad:[SGGuard]}]},
-  { path: 'experiencia', component: ExperienciaComponent}, 
-  { path: 'proyectos', component: ProyectosComponent},
-  { path: 'hard', component: HardSkillsComponent},
-  { path: 'soft', component: SoftComponent},
+  { path: '', redirectTo: 'acerca', pathMatch: 'full' },
+  { path: 'educacion', component: EducacionComponent},
+  { path: 'acerca', component: AcercaDeComponent},
+  { path: 'experiencia', component: ExperienciaComponent },
+  { path: 'proyectos', component: ProyectosComponent },
+  { path: 'hard', component: HardSkillsComponent },
+  { path: 'soft', component: SoftComponent },
 ];
 
 @NgModule({

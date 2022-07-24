@@ -1,50 +1,30 @@
 <div class="container">
 	<div class="container-fluid col-sm-12 col-12 mx-auto card mb-3 bg-dark pb-3">
-	  <h3 class="h3-titulos pt-4 ps-4 display-6 text-center mt-1 mb-2">
-		Hard Skills
-		<a
-		*ngIf="guard.canActivate()"
-	   class="btn btn-outline-light agregar__boton mb-3"
-	   role="button" title="Agregar Información"
-	   data-bs-target="#SkillsModalAgregar"
-	   data-bs-toggle="modal"
-	   ><i class="fa-solid fa-square-plus"></i
-	 	></a>
+		<h3 class="h3-titulos pt-4 ps-4 display-6 text-center mt-1 mb-2">
+			Hard Skills
+			<a *ngIf="guard.canActivate()" class="btn btn-outline-light agregar__boton mb-3" role="button"
+				title="Agregar Información" data-bs-target="#SkillsModalAgregar" data-bs-toggle="modal"><i
+					class="fa-solid fa-square-plus"></i></a>
 		</h3>
 
-<div class="container col-12 d-flex align-content-center justify-content-center">
-	<div *ngFor="let x of miPortfolio" class="row">
-		<div *ngFor="let miPortfolio of x" class="col-lg-2 col-sm-12 col-md-4  justify-self-center">
-			<input [(ngModel)]="miPortfolio.id" #identificador style="display: none;"><br> 
-			
-			<i class="display-3 col-sm-12  d-flex align-content-center justify-content-center" [class]="miPortfolio.icono" [style]="miPortfolio.color"></i>
-			<circle-progress  class="d-flex align-content-center justify-content-center"
-			[percent]="miPortfolio.circulo"
-			[unitsColor]="'#ffffff'"
-					[responsive]="false"
-					[radius]="70"
-					[unitsFontSize]="'50'"
-					[showSubtitle]="false"
-					[titleFontSize]="'50'"
-					[titleColor]="'#ffffff'"
-					[maxPercent]="100"
-					[showBackground]="false"
-					[showInnerStroke]="true"
-					[showZeroOuterStroke]="true"
-					[clockwise]="true"
-					[backgroundPadding]="5"
-					[backgroundOpacity]="1"
-					[outerStrokeGradient]="true"
-					[outerStrokeColor]="'#00ffb7'"
-					[outerStrokeGradientStopColor]="'#a3ffc7'"
-					[innerStrokeColor] = "'#666666'"
-					[innerStrokeWidth]="10"
-					[outerStrokeWidth]="10"
-					[space]="-10"
-					>    
-				</circle-progress>
-		
-				<!-- FONT AWSOME ICONS UTILIZADOS EN LAS PETICIONES POST & PUT se pueden cambiar, solo buscar el nombre correspondiente al icono desado en https://fontawesome.com/icons
+		<div class="container col-12 d-flex align-content-center justify-content-center">
+			<div *ngFor="let x of miPortfolio" class="row">
+				<div *ngFor="let miPortfolio of x" class="col-lg-2 col-sm-12 col-md-4  justify-self-center">
+					<input [(ngModel)]="miPortfolio.id" #identificador style="display: none;"><br>
+
+					<i class="display-3 col-sm-12  d-flex align-content-center justify-content-center"
+						[class]="miPortfolio.icono" [style]="miPortfolio.color"></i>
+					<circle-progress class="d-flex align-content-center justify-content-center"
+						[percent]="miPortfolio.circulo" [unitsColor]="'#ffffff'" [responsive]="false" [radius]="70"
+						[unitsFontSize]="'50'" [showSubtitle]="false" [titleFontSize]="'50'" [titleColor]="'#ffffff'"
+						[maxPercent]="100" [showBackground]="false" [showInnerStroke]="true"
+						[showZeroOuterStroke]="true" [clockwise]="true" [backgroundPadding]="5" [backgroundOpacity]="1"
+						[outerStrokeGradient]="true" [outerStrokeColor]="'#00ffb7'"
+						[outerStrokeGradientStopColor]="'#a3ffc7'" [innerStrokeColor]="'#666666'"
+						[innerStrokeWidth]="10" [outerStrokeWidth]="10" [space]="-10">
+					</circle-progress>
+
+					<!-- FONT AWSOME ICONS UTILIZADOS EN LAS PETICIONES POST & PUT se pueden cambiar, solo buscar el nombre correspondiente al icono desado en https://fontawesome.com/icons
 					fa-brands fa-html5
 					fa-brands fa-css3-alt
 					fa-brands fa-js
@@ -52,155 +32,88 @@
 					fa-brands fa-bootstrap
 					fa-brands fa-sass
 				-->
-	
-			<!-- Cabe destacar que para hacer la animación de los circulos, antes de implementar en el proyecto ng-circle-progress ,utilizaba una clase circulos, y creaba a partir de ella los circulos con su correspondiente animación, pero si bien funcionaba en ordenador, cuando se visualizaba en móvil, la animación no se veía correctamente (cargaba el numero de %, pero demoraba demasiado), y los conocimientos que tengo (de momento) no me alcanzaron para solucionar el problema, por lo cual preferí utilizar ng-circle-progress, lo cual soluciona el problema y ahorra escribir codigo  -->
-				
-				<div class="d-flex justify-content-center">
-					
-					<a
-					class="display-1 col-sm-12 btn btn-outline-light hover__boton "
-					role="button"
-					data-bs-target="#SkillsModal"
-					data-bs-toggle="modal"
-					*ngIf="guard.canActivate()"
-					(click)="
+					<!-- Cabe destacar que para hacer la animación de los circulos, antes de implementar en el proyecto ng-circle-progress ,utilizaba una clase circulos, y creaba a partir de ella los circulos con su correspondiente animación, pero si bien funcionaba en ordenador, cuando se visualizaba en móvil, la animación no se veía correctamente (cargaba el numero de %, pero demoraba demasiado), y los conocimientos que tengo (de momento) no me alcanzaron para solucionar el problema, por lo cual preferí utilizar ng-circle-progress, lo cual "semi-soluciona" el problema y ahorra escribir codigo  -->
+
+					<div class="d-flex justify-content-center">
+						<a class="display-1 col-sm-12 btn btn-outline-light hover__boton " role="button"
+							data-bs-target="#SkillsModal" data-bs-toggle="modal" *ngIf="guard.canActivate()" (click)="
 					editar(
 						identificador.value,miPortfolio.circulo,miPortfolio.icono,miPortfolio.nombre,miPortfolio.color
-						)"
-						title="Editar Tarjeta"
-						><i class="fa-solid fa-pencil"></i
-							></a>
-						</div>
+						)" title="Editar Tarjeta"><i class="fa-solid fa-pencil"></i></a>
+					</div>
+				</div>
 			</div>
 		</div>
-</div> 
 
-<!-- inicio del modal editar hard -->
-<div
-class="modal fade"
-  id="SkillsModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-	<div class="modal-content">
-	  <div class="modal-header">
-		<h5 class="modal-title" id="exampleModalLabel">Editar {{editarHards.nombre}}</h5>
-		<button
-		  type="button"
-		  class="btn-close"
-		  data-bs-dismiss="modal"
-		  aria-label="Close"
-		></button>
-	  </div>
-	  <div class="modal-body">
-		<div class="container-fluid">
-			<p class="form-control">
-			  Nombre
-			  <input
-				class="form-control"
-				type="text"
-			 [(ngModel)]="editarHards.nombre"
-			  />
-			</p>
-		  <p class="form-control">Editar color
-			<input
-			  class="form-control"
-			  type="text"
-			  [(ngModel)]="editarHards.color"/></p>
+		<!-- inicio del modal editar hard -->
+		<div class="modal fade" id="SkillsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Editar {{editarHards.nombre}}</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<p class="form-control">
+								Nombre
+								<input class="form-control" type="text" [(ngModel)]="editarHards.nombre" />
+							</p>
+							<p class="form-control">Editar color
+								<input class="form-control" type="text" [(ngModel)]="editarHards.color" />
+							</p>
 
-		  <p class="form-control">
-			Font Awsome Icon<input
-			  class="form-control"
-			  type="text"
-			  [(ngModel)]="editarHards.icono"
-			/>
-		  </p>
-		  <p class="form-control">
-			Porcentaje<input
-			  class="form-control"
-			  type="text"
-			 [(ngModel)]="editarHards.circulo"
-			/>
-		  </p>
+							<p class="form-control">
+								Font Awsome Icon<input class="form-control" type="text"
+									[(ngModel)]="editarHards.icono" />
+							</p>
+							<p class="form-control">
+								Porcentaje<input class="form-control" type="text" [(ngModel)]="editarHards.circulo" />
+							</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success fa-solid fa-floppy-disk" (click)="editarH()"
+							title="Guardar Cambios"></button>
+						<button type="button" class="btn btn-danger fa-solid fa-trash-can" title="Borrar Tarjeta"
+							(click)="eliminarHard()"></button>
+					</div>
+				</div>
+			</div>
 		</div>
-	  </div>
-	  <div class="modal-footer">
-		<button
-		  type="button"
-		  class="btn btn-success fa-solid fa-floppy-disk"
-		  (click)="editarH()"
-		  title="Guardar Cambios"
-		></button>
-		<button type="button" class="btn btn-danger fa-solid fa-trash-can" title="Borrar Tarjeta" (click)="eliminarHard()"></button>
-	  </div>
+
 	</div>
-  </div>
 </div>
 
-	</div>
-	</div>
-	
-
-	<div
-	class="modal fade"
-	  id="SkillsModalAgregar"
-	  tabindex="-1"
-	  aria-labelledby="exampleModalLabel"
-	  aria-hidden="true"
-	>
-	  <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="SkillsModalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
-		  <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Agregar Hard Skill</h5>
-			<button
-			  type="button"
-			  class="btn-close"
-			  data-bs-dismiss="modal"
-			  aria-label="Close"
-			></button>
-		  </div>
-		  <div class="modal-body">
-			<div class="container-fluid">
-				<p class="form-control">
-				  Nombre
-				  <input
-					class="form-control"
-					type="text"
-				 [(ngModel)]="nuevoHard.nombre"
-				  />
-				</p>
-			  <p class="form-control">Editar color
-				<input
-				  class="form-control"
-				  type="text"
-				  [(ngModel)]="nuevoHard.color"/></p>
-	
-			  <p class="form-control">
-				Font Awsome Icon<input
-				  class="form-control"
-				  type="text"
-				  [(ngModel)]="nuevoHard.icono"
-				/>
-			  </p>
-			  <p class="form-control">
-				Porcentaje<input
-				  class="form-control"
-				  type="text"
-				 [(ngModel)]="nuevoHard.circulo"
-				/>
-			  </p>
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Agregar Hard Skill</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
-		  </div>
-		  <div class="modal-footer">
-			<button
-			  type="button"
-			  class="btn btn-success fa-solid fa-floppy-disk"
-			  (click)="agregarHard()"
-			  title="Guardar Cambios"
-			></button>
-		  </div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<p class="form-control">
+						Nombre
+						<input class="form-control" type="text" [(ngModel)]="nuevoHard.nombre" />
+					</p>
+					<p class="form-control">Editar color
+						<input class="form-control" type="text" [(ngModel)]="nuevoHard.color" />
+					</p>
+
+					<p class="form-control">
+						Font Awsome Icon<input class="form-control" type="text" [(ngModel)]="nuevoHard.icono" />
+					</p>
+					<p class="form-control">
+						Porcentaje<input class="form-control" type="text" [(ngModel)]="nuevoHard.circulo" />
+					</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success fa-solid fa-floppy-disk" (click)="agregarHard()"
+					title="Guardar Cambios"></button>
+			</div>
 		</div>
-	  </div>
 	</div>
+</div>

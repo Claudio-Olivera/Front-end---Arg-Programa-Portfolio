@@ -4,7 +4,7 @@
     Educacion  <!-- la palabra educacion fuera de la tarjeta? -->
 
       <a
-       *ngIf="SGguard.canActivate()"
+       *ngIf="guard.canActivate()"
       class="btn btn-outline-light agregar__boton mb-3"
       role="button" title="Agregar Información"
       data-bs-target="#EducacionModalNuevo"
@@ -31,7 +31,7 @@
           role="button"
           data-bs-target="#EducacionModal"
           data-bs-toggle="modal"
-          *ngIf="SGguard.canActivate()"
+          *ngIf="guard.canActivate()"
           (click)="editar(identificador.value, miPortfolio.titulo,miPortfolio.nivelEducativo,miPortfolio.institucion)" title="Editar Tarjeta"><i class="fa-solid fa-pencil"></i
             ></a>
 

@@ -1,32 +1,34 @@
-.hover__boton{
+.hover__boton {
   line-height: 170%;
   height: 40px;
   width: 40px;
   color: black;
-  background-color:rgb(2, 247, 137);
+  background-color: rgb(2, 247, 137);
 }
- .hover__boton:hover{
-  background-color:#005afc;
-  font-size: 20px;
-  color: white;
-}
-  .agregar__boton{
-    line-height: 170%;
-    height: 40px;
-    width: 40px;
-    color: black;
-    background-color:rgb(2, 247, 137);
-}
-  .agregar__boton:hover{
-  background-color:#005afc;
-  font-size: 20px;
-  color: white;
-}
-     
 
-.icons{
+.hover__boton:hover {
+  background-color: #005afc;
+  font-size: 20px;
+  color: white;
+}
+
+.agregar__boton {
+  line-height: 170%;
+  height: 40px;
+  width: 40px;
+  color: black;
+  background-color: rgb(2, 247, 137);
+}
+
+.agregar__boton:hover {
+  background-color: #005afc;
+  font-size: 20px;
+  color: white;
+}
+
+
+.icons {
   font-size: 115px;
-  text-align: center;        
+  text-align: center;
   color: #0058ff;
 }
-

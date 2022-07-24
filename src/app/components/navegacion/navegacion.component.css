@@ -1,13 +1,12 @@
-
-a:hover{
+a:hover {
     transition: 1s;
-    font-size:40px;
+    font-size: 40px;
     color: rgb(2, 247, 137);
 }
 
 .h3-acercaDe {
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
-    font-weight:lighter;
+    font-weight: lighter;
     font-size: 30px;
-  }
+}

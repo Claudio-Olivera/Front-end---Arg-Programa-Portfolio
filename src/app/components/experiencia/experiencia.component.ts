@@ -9,49 +9,53 @@ import { ExperienciaService } from 'src/app/servicios/experiencia.service';
 })
 export class ExperienciaComponent implements OnInit {
 
-  miPortfolio:any=[];
-  nuevoExperiencia : experiencia = {id:0, empleo:' ', descripcionEmpleo: ' '};
-  editarExperiencia : experiencia = {id:0, empleo: ' ', descripcionEmpleo: ' '};
+  miPortfolio: any = [];
+  nuevoExperiencia: experiencia = { id: 0, empleo: ' ', descripcionEmpleo: ' ' };
+  editarExperiencia: experiencia = { id: 0, empleo: ' ', descripcionEmpleo: ' ' };
+  guard = this.SGguard
 
-
-  constructor(private datosPortfolio:ExperienciaService, public SGguard:SGGuard) { }
+  constructor(private datosPortfolio: ExperienciaService, private SGguard: SGGuard) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerExp().subscribe((datos:any[])=>{this.miPortfolio.push(datos)}); 
+    this.datosPortfolio.obtenerExp().subscribe((datos: any[]) => { this.miPortfolio.push(datos) });
   }
 
 
-  editar(id:any, x:any,l:any){
- this.editarExperiencia.id=id
- this.editarExperiencia.empleo=x
- this.editarExperiencia.descripcionEmpleo=l
-}
+  editar(id: any, x: any, l: any) {
+    this.editarExperiencia.id = id
+    this.editarExperiencia.empleo = x
+    this.editarExperiencia.descripcionEmpleo = l
+  }
 
 
-  verExp(){
-    this.datosPortfolio.obtenerExp().subscribe(data=>{
+  verExp() {
+    this.datosPortfolio.obtenerExp().subscribe(data => {
       console.log(data);
-      this.miPortfolio=data [0]})
-    }
-
-  agregarExp(){
-    this.datosPortfolio.sumarExp(this.nuevoExperiencia).subscribe(
-    data => {
-    console.log(data); } );
+      this.miPortfolio = data[0]
+    })
   }
-  
-  editarExp(){
+
+  agregarExp() {
+    this.datosPortfolio.sumarExp(this.nuevoExperiencia).subscribe(
+      data => {
+        console.log(data);
+      });
+  }
+
+  editarExp() {
     this.datosPortfolio.editExp(this.editarExperiencia, this.editarExperiencia.id).subscribe(
       data => {
-       console.log(data); } );
-      }
-  
-eliminarExp(){
-  this.datosPortfolio.borrarExp(this.editarExperiencia.id).subscribe((data:any) => {return data})}
+        console.log(data);
+      });
+  }
+
+  eliminarExp() {
+    this.datosPortfolio.borrarExp(this.editarExperiencia.id).subscribe((data: any) => { return data })
+  }
 }
 
-export interface experiencia{
-  id:Number;
+export interface experiencia {
+  id: Number;
   empleo: String;
-  descripcionEmpleo:String;
+  descripcionEmpleo: String;
 }

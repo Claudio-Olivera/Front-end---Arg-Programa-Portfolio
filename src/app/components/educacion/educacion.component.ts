@@ -1,8 +1,5 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-
-import { throttleTime } from 'rxjs';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SGGuard } from 'src/app/guard/sg.guard';
-import { AutenticacionService} from 'src/app/servicios/autenticacion.service';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 
 @Component({
@@ -12,65 +9,63 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
 })
 export class EducacionComponent implements OnInit {
 
-  miPortfolio:any=[];
- 
+  miPortfolio: any = [];
 
 
-  nuevoEducacion : educacion = {id: 0, titulo:' ', nivelEducativo: ' ', institucion: ' ' }
-  editarEducacion : educacion = {id: 0, titulo:' ', nivelEducativo: ' ', institucion: ' ' }
 
-  
+  nuevoEducacion: educacion = { id: 0, titulo: ' ', nivelEducativo: ' ', institucion: ' ' }
+  editarEducacion: educacion = { id: 0, titulo: ' ', nivelEducativo: ' ', institucion: ' ' }
+  guard = this.SGguard
 
 
-  constructor(private datosPortfolio:EducacionService,public SGguard:SGGuard, private cd:ChangeDetectorRef) { 
+
+  constructor(private datosPortfolio: EducacionService, private SGguard: SGGuard, private cd: ChangeDetectorRef) {
 
   }
 
   ngOnInit(): void {
-    /* this.datosPortfolio.obtenerEdu().subscribe(data=>{
-      this.miPortfolio=data; */
-      this.datosPortfolio.obtenerEdu().subscribe((datos: any[])=>{this.miPortfolio.push(datos)}) 
-}
-
-
-editar(id:any,x:any,l:any,r:any){
-  this.editarEducacion.id=id
-  this.editarEducacion.titulo=x
-  this.editarEducacion.nivelEducativo=l
-  this.editarEducacion.institucion=r
+    this.datosPortfolio.obtenerEdu().subscribe((datos: any[]) => { this.miPortfolio.push(datos) })
   }
 
-
-verEd(){
-  this.datosPortfolio.obtenerEdu().subscribe(data=>{
-    console.log(data);
-    this.miPortfolio=data[0]})
+  editar(id: any, x: any, l: any, r: any) {
+    this.editarEducacion.id = id
+    this.editarEducacion.titulo = x
+    this.editarEducacion.nivelEducativo = l
+    this.editarEducacion.institucion = r
   }
 
-agregarEd(){
-  this.datosPortfolio.sumarEdu(this.nuevoEducacion).subscribe(
-  data => {
-  console.log(data);
-  window.location.reload()});
-}
-
-editarEd(){
-  this.datosPortfolio.editEdu(this.editarEducacion, this.editarEducacion.id).subscribe(
-  data => {
-  console.log(data);
-  window.location.reload()});
+  verEd() {
+    this.datosPortfolio.obtenerEdu().subscribe(data => {
+      console.log(data);
+      this.miPortfolio = data[0]
+    })
   }
-    
-borradoCompleto(){
-  this.datosPortfolio.borrarEdu(this.editarEducacion.id).subscribe((data:any)=>{window.location.reload()})
-}
 
-   
+  agregarEd() {
+    this.datosPortfolio.sumarEdu(this.nuevoEducacion).subscribe(
+      data => {
+        console.log(data);
+        window.location.reload()
+      });
+  }
+
+  editarEd() {
+    this.datosPortfolio.editEdu(this.editarEducacion, this.editarEducacion.id).subscribe(
+      data => {
+        console.log(data);
+        window.location.reload()
+      });
+  }
+
+  borradoCompleto() {
+    this.datosPortfolio.borrarEdu(this.editarEducacion.id).subscribe((data: any) => { window.location.reload() })
+  }
+
 }
 
 export interface educacion {
-  id:Number;
-  titulo:String;
+  id: Number;
+  titulo: String;
   nivelEducativo: String;
-  institucion:String;
+  institucion: String;
 }

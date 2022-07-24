@@ -1,5 +1,4 @@
-
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SGGuard } from 'src/app/guard/sg.guard';
 import { SoftService } from 'src/app/servicios/soft.service';
 
@@ -10,53 +9,58 @@ import { SoftService } from 'src/app/servicios/soft.service';
 })
 export class SoftComponent implements OnInit {
 
-  miPortfolios:any=[];
+  miPortfolios: any = [];
+  guard = this.SGguard;
 
-  nuevoSoft : Soft = {id:0, softTitulo:' ', softDescripcion:' ', icono:' '}  
-  editarSoft: Soft = {id:0, softTitulo:' ', softDescripcion:' ', icono:' '}
+  nuevoSoft: Soft = { id: 0, softTitulo: ' ', softDescripcion: ' ', icono: ' ' }
+  editarSoft: Soft = { id: 0, softTitulo: ' ', softDescripcion: ' ', icono: ' ' }
 
-  constructor(private datosPortfolio:SoftService, public SGguard:SGGuard) { }
+  constructor(private datosPortfolio: SoftService, private SGguard: SGGuard) { }
 
   ngOnInit(): void {
     this.datosPortfolio.obtenerSoft().subscribe(
-      (datos:any[])=>{this.miPortfolios.push(datos)})
+      (datos: any[]) => { this.miPortfolios.push(datos) })
   }
 
- 
-  editar(id:any,x:any,l:any,m:any){
-    this.editarSoft.id=id
-    this.editarSoft.softTitulo=x
-    this.editarSoft.softDescripcion=l
-    this.editarSoft.icono=m
+
+  editar(id: any, x: any, l: any, m: any) {
+    this.editarSoft.id = id
+    this.editarSoft.softTitulo = x
+    this.editarSoft.softDescripcion = l
+    this.editarSoft.icono = m
   }
 
-  verS(){
-    this.datosPortfolio.obtenerSoft().subscribe((data: any[])=>{
+  verS() {
+    this.datosPortfolio.obtenerSoft().subscribe((data: any[]) => {
       console.log(data);
-      this.miPortfolios=data [0]})
-    }
-  
-  agregarS(){
+      this.miPortfolios = data[0]
+    })
+  }
+
+  agregarS() {
     this.datosPortfolio.sumarSoft(this.nuevoSoft).subscribe(
       (data: any) => {
-    console.log(data); } );
+        console.log(data);
+      });
   }
-  
-  editarS(){
+
+  editarS() {
     this.datosPortfolio.editSoft(this.editarSoft.id, this.editarSoft).subscribe(
       (data: any) => {
         console.log(data)
         window.location.reload()
-        window.focus(); } );
-      }
-  
-  borrarS(){
-    this.datosPortfolio.borrarSoft(this.editarSoft.id).subscribe((data:any)=>  {return data})}    
+        window.focus();
+      });
+  }
+
+  borrarS() {
+    this.datosPortfolio.borrarSoft(this.editarSoft.id).subscribe((data: any) => { return data })
+  }
 }
 
-export interface Soft{
-  id:Number;
-  softTitulo:String;
-  softDescripcion:String;
-  icono:String;
-  }
+export interface Soft {
+  id: Number;
+  softTitulo: String;
+  softDescripcion: String;
+  icono: String;
+}
