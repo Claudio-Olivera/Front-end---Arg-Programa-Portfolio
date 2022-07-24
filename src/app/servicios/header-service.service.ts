@@ -14,11 +14,11 @@ export class HeaderServiceService {
   }
 
   editImgPerfil( arr:  Acercade):Observable<any>{
-    return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizarImgPerfil/"+3, arr);
+    return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizarImgPerfil/"+1, arr);
   }
   
   editImgRepresentativa(arr: Acercade):Observable<any>{
-    return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizarImgRepresentativa/"+3,arr);
+    return this.autenticationService.Cliente.put(this.autenticationService.url+"/actualizarImgRepresentativa/"+1,arr);
   }
 }
 export interface Acercade{

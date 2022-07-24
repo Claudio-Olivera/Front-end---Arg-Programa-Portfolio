@@ -40,7 +40,7 @@ ngOnInit(): void {
 
 
 ngAfterViewChecked(){
-  this.imgRepresent.nativeElement.style.background="url("+this.miPortfolio.imgRepresentativa+")"
+  this.imgRepresent.nativeElement.style.background="url(" +this.miPortfolio.imgRepresentativa+  ")" 
   this.imgRepresent.nativeElement.style.backgroundAttachment ="fixed"
   this.imgRepresent.nativeElement.style.backgroundSize ="cover"
   this.imgRepresent.nativeElement.style.width ="auto"

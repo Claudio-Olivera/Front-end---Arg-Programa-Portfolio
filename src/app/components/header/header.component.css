@@ -1,199 +1,93 @@
-.izquierda{
-  width: 100%;
-}
-
-.ul__Icons{
+.ul__Icons {
   justify-content: end;
   margin-right: 5%;
 }
 
-.main-menu__link{ 
+.main-menu__link {
   margin-top: 60%;
-  color:#ffffff ;
+  color: #ffffff;
   font-size: 30px;
-  padding:10px;
+  padding: 10px;
   text-decoration: none;
 }
 
-.main-menu__link:hover{ 
+.main-menu__link:hover {
   color: rgb(2, 247, 137);
 }
 
-.formularioOculto{
-  display: none;
-}
-.dblock{
-  display: block;
-}
-
-
-
-
 /* LOGO ARGENTINA PROGRAMA Y SUS HOVER CON FILTROS PARA EL CAMBIO DE COLOR*/
-
 .img-Arg {
   position: absolute;
   width: 174px;
 }
+
 .img-Arg:hover {
   -webkit-filter: invert(60%) sepia(20%) saturate(5000%) hue-rotate(1200deg) brightness(200%) contrast(100%);
-  filter: invert(60%) sepia(20%) saturate(5000%) hue-rotate(1200deg) brightness(200%) contrast(100%); 
-  /*cambiar color con hue-rotate*/
-}
-.img1 {
- /* background: url('/assets/img/img-represent.jpg'); */
- width: auto;
- height:350px;
- background-size: cover;
- background-attachment: fixed;
-  /* ACA LE PUEDO DAR CON !IMPORTANT */
-  /* ahora uso el view child de angular con element ref para hacer estos cambios en la img */
+  filter: invert(60%) sepia(20%) saturate(5000%) hue-rotate(1200deg) brightness(200%) contrast(100%);
+  /*cambio el color modificando hue-rotate*/
 }
 
-
-
-
-
-@media screen and (max-width:474px){
-  .img-Arg{
+@media screen and (max-width:474px) {
+  .img-Arg {
     position: relative;
     display: block;
     margin: 0 auto;
   }
-  .ul__Icons{
+
+  .ul__Icons {
     justify-content: center;
     margin-right: 0%;
   }
-  .main-menu__link{
+
+  .main-menu__link {
     margin-top: 0%;
   }
-  .titulo{
+
+  .titulo {
     font-size: 200%;
   }
 }
 
-
-
-
-
-  /* COLORES DE : ICONOS,SUS HOVER, BARRAS DE NAVEGACION, BODY  */
-      card {
-        background-color: transparent;
-        position: absolute;
-        margin-top: 270px;
-        margin-left: 90%;
-        max-height:200px ;
-        @media  (max-width: 1437px) {
-          margin-right: 20%;
-          width: 10%;
-        } 
-      }
-
-
-  .pequecontenedor{
-    position: absolute;
-    top: 23%;
-    right: 2%;
-    height: auto;
-    padding: 10px;
-    width: 190px;
-    background-color: rgb(53, 53, 53);
-    text-align: center;
-    border-radius: 3%;
-    z-index: 1;
-  }
-
-
-  @media screen and (max-width: 770px){
-    .pequecontenedor{
-      top:25%;
-    }
-  }
-  @media screen and (max-width: 404px){
-    .pequecontenedor{
-      top: 27%;
-      height: 200px;
-      width: 160px;
-    }
-  }
-  @media screen and (min-height: 1024px){
-    .pequecontenedor{
-      top: 17%;
-    }
-  }
-  @media screen and (height:1368px){
-    .pequecontenedor{
-      top: 15%;
-    }
-  }
-  @media screen and (height: 720px){
-    .pequecontenedor{
-      top: 35%;
-    }
-  }
-  @media screen and (height:600px){
-    .pequecontenedor{
-      top: 35%;
-    }
-  }
-  .pequecontenedor .form-control{
-    width: 90%;
-    margin:10% 5% 10%
-  }
-  .pequecontenedor .userboton{
-    border: 2px solid white ;
-    background-color:rgb(54, 54, 54);
-    padding: 5%;
-    color:rgb(255, 255, 255);
-    font-family: 'Poppins', sans-serif;
-    font-weight: bolder;
-    width: 90%;
-  }
-  .pequecontenedor .userboton:hover {
-    background-color: rgb(2, 247, 137);
-    color: black;
-  }
-  .texto-errorUser{
-    padding: -50%;
-    margin-top: -10%;
-    font-size: 80%;
-    margin-bottom: -7%;
-  }
-  .texto-errorContraseña{
-    padding: -50%;
-    margin-top: -10%;
-    font-size: 80%;
-    margin-bottom: 4%;
-  }
-  .form-control:focus{
-    border-color: rgb(2, 247, 137);
-    -webkit-box-shadow: none;
-    box-shadow: none;
+.form-control:focus {
+  border-color: rgb(2, 247, 137);
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
-
 .img-Perfil {
-  max-height:180px;         
+  max-height: 180px;
   background-color: rgb(2, 247, 137);
   padding: 2px;
   border-radius: 50%;
 }
 
-.hover__boton{
+.hover__boton {
+  color: black;
+  height: 40px;
+  width: 40px;
+  background-color: rgb(2, 247, 137);
+}
 
-  color: black;
-  height: 40px;
-  width: 40px;
-  background-color:rgb(2, 247, 137);
-}
-.botonEdit__represent{
-  background-color:rgb(2, 247, 137);
+.botonEdit__represent {
+  background-color: rgb(2, 247, 137);
   color: black;
   height: 40px;
   width: 40px;
 }
-.botonEdit__represent:hover,.hover__boton:hover{
-  background-color:#005afc;
-    font-size: 20px;
-    color: white;
+
+.botonEdit__represent:hover,
+.hover__boton:hover {
+  background-color: #005afc;
+  font-size: 20px;
+  color: white;
+}
+
+.btn-hover-sesion {
+  background-color: rgb(2, 247, 137);
+  color: black;
+}
+
+.btn-hover-sesion:hover {
+  background-color: #005afc;
+  color: white;
 }
