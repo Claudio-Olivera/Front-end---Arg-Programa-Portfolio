@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { SGGuard } from 'src/app/guard/sg.guard';
 import { SkillsService } from 'src/app/servicios/hard.service';
 
@@ -12,11 +12,10 @@ export class HardSkillsComponent implements OnInit {
   guard = this.SGguard
 
   editarHards: Hard = { id: 0, circulo: 0, icono: ' ', nombre: ' ', color: ' ' }
-  nuevoHard: Hard = { id: 0, circulo: 0, icono: ' ', nombre: ' ', color: ' ' }
+  nuevoHard: Hard = { id: 0, circulo: 0, icono: ' ', nombre: ' ', color: ' ' };
 
-  botonEditHardSoft: boolean = true;
 
-  arrayDeEstilos: any = []
+  
   constructor(private SGguard: SGGuard, private datosPortfolio: SkillsService) { }
 
   ngOnInit(): void {
@@ -24,6 +23,8 @@ export class HardSkillsComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
+   
+
   }
 
   editar(id: any, circulo: any, icono: any, nombre: any, color: any) {

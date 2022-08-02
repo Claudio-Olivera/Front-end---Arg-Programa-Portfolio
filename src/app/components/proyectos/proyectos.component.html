@@ -15,7 +15,7 @@
 <span *ngFor="let listas of miPortfolio" class="row align-content-center d-flex justify-content-center">
     <div  *ngFor="let miPortfolio of listas" class="col-12 col-md-5 mb-3" >
       <input [(ngModel)]="miPortfolio.id" #identificador style="display: none;"><br> 
-      <div class="card-body bg-sub rounded bg-dark bg-gradient text-white">
+      <div class="card-body rounded bg-dark bg-gradient text-white">
         <div >
           <div class="card-title text-center display-6">{{miPortfolio.proNombre}}</div>
           <div class="card-subtitle  mb-2 text-white">Fecha de finalización: {{miPortfolio.proFecha}}</div>

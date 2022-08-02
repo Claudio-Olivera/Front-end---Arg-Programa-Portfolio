@@ -13,7 +13,7 @@
 					<input [(ngModel)]="miPortfolio.id" #identificador style="display: none;"><br>
 
 					<i class="display-3 col-sm-12  d-flex align-content-center justify-content-center"
-						[class]="miPortfolio.icono" [style]="miPortfolio.color"></i>
+						[class]="miPortfolio.icono" [style.color]="miPortfolio.color"></i>
 					<circle-progress class="d-flex align-content-center justify-content-center"
 						[percent]="miPortfolio.circulo" [unitsColor]="'#ffffff'" [responsive]="false" [radius]="70"
 						[unitsFontSize]="'50'" [showSubtitle]="false" [titleFontSize]="'50'" [titleColor]="'#ffffff'"
@@ -59,10 +59,11 @@
 								Nombre
 								<input class="form-control" type="text" [(ngModel)]="editarHards.nombre" />
 							</p>
-							<p class="form-control">Editar color
-								<input class="form-control" type="text" [(ngModel)]="editarHards.color" />
-							</p>
 
+					 	<label for="ColorPicker" class="form-label">Editar color</label>
+								<input class="form-control form-control-color mb-2" id="ColorPicker" title="Escoje el color" type="color" [(ngModel)]="editarHards.color" />
+						
+						
 							<p class="form-control">
 								Font Awsome Icon<input class="form-control" type="text"
 									[(ngModel)]="editarHards.icono" />
@@ -98,10 +99,8 @@
 						Nombre
 						<input class="form-control" type="text" [(ngModel)]="nuevoHard.nombre" />
 					</p>
-					<p class="form-control">Editar color
-						<input class="form-control" type="text" [(ngModel)]="nuevoHard.color" />
-					</p>
-
+						<label for="ColorPicker" class="form-label">Agrega un color al icono</label>
+						<input class="form-control form-control-color mb-2" id="ColorPicker" title="Escoje el color" type="color" [(ngModel)]="nuevoHard.color" />
 					<p class="form-control">
 						Font Awsome Icon<input class="form-control" type="text" [(ngModel)]="nuevoHard.icono" />
 					</p>

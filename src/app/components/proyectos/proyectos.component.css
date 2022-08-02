@@ -64,12 +64,7 @@
   color: white;
 }
     
- .bg-sub{
-    box-shadow: 2px 2px 8px 1px rgba(2,247,137,0.9);
-    -webkit-box-shadow: 2px 2px 8px 1px rgba(2,247,137,0.9);
-    -moz-box-shadow: 2px 2px 8px 1px rgba(2,247,137,0.9);
-    border-radius: 5px;
- }
+
 
     @media screen and (min-width :767px ) {
         
